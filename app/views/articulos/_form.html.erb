@@ -1,0 +1,19 @@
+
+<%= form_for(@articulo) do |f| %>
+  <% @articulo.errors.full_messages.each do |message| %>
+    <div class="form-group text-center be-red white">
+    * <%= message %>
+    </div>
+  <%end%>
+    <div class="form-group text-center">
+      <label for="exampleInputEmail1">Titulo</label>
+        <%= f.text_field :nombre,required: true,autofocus: true,input_html: {placeholder: "Titulo", class:"form-control input-lg"  } %>
+    </div>
+    <div class="form-group text-center">
+      <label for="exampleInputEmail1">Cantidad</label>
+        <%= f.text_field :cantidad,required: true,autofocus: true,input_html: {placeholder: "Escribe La Cantidad De articulo", style:"height:250px;", class:"form-control input-lg" , min:"1"}%>
+    </div>
+    <div class="form-group text-center">
+        <%= f.submit "Guardar", class:"btn btn-success btn-lg" %>
+    </div>
+<%end%>
