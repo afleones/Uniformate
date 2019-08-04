@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <h1 class="text-center">Articulo</h1>
+            <%= @articulo.nombre %>
+            <div>
+              <%= @articulo.cantidad %>
+            </div>
+            <div class="">
+              <%= link_to "Editar", edit_articulo_path(@articulo) , class:"btn btn-warning" %> - <%= link_to "Eliminar", @articulo, method: :delete , class:"btn btn-info" %> - <%= link_to "Atras", articulos_path(@articulo) , class:"btn btn-danger" %>
+            </div>
+        </div>
+    </div>
+</div>

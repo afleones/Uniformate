@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <h1 class="text-center">Articulos</h1>
+            <tr class="active">
+              <% @articulos.each do |articulo| %>
+              <%= link_to articulo.nombre, articulo %>
+                <div>
+                  <%= articulo.cantidad %>
+                </div>
+              <%end%>
+            </tr>
+        </div>
+    </div>
+    <%= link_to "Atras", home_index_path(@articulo), class:"btn btn-danger" %> - <%= link_to "Crear Articulo", new_articulo_path(@articulo) , class:"btn btn-success btn-lg" %>
+</div>
