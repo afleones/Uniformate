@@ -7,11 +7,7 @@ Rails.application.routes.draw do
   resources :categorias
 
 
-<<<<<<< HEAD
   resources :articulos
-
   root to: 'home#index'
-=======
->>>>>>> Leones
 
 end
