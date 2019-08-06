@@ -247,48 +247,38 @@
               <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>General</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 3 | Registration Page</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+  <div class="col-xs-6">
+      <h1>Bienvenido</h1>
+      <li>
+              <a href="<%= new_user_session_path %>">
+                <i class="fa fa-user fa-fw hidden-md hidden-lg" aria-hidden="true"></i>INICIAR SESIÓN
               </a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Íconos</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Botones</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Deslizadores</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Modalidades y Alertas</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-edit"></i>
-            <p>
-              Formas
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Elementos generales</p>
-              </a>
+            <li>
+              <%= link_to new_user_registration_path do%>
+                <i class="fa fa-user fa-fw hidden-md hidden-lg" aria-hidden="true"></i>REGISTRARME
+              <%end%>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
@@ -494,15 +484,16 @@
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
 
-</div>
-<!-- /.content-wrapper -->
-<footer class="main-footer">
-  <strong>Copyright © 2019-2023 <a href="#">ProyectoFormativo.io</a>.</strong>
-  All rights reserved.
-  <div class="float-right d-none d-sm-inline-block">
-    <b>Version</b> 1.0.0-beta.1
   </div>
-</footer>
+
+<body>
+  <div class="container">
+      <%= yield %>
+  </div>
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+  </html>

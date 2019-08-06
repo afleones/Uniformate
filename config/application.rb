@@ -27,5 +27,11 @@ module Uniformate
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.to_prepare do
+      Devise::UsersController.layout "home"
+      Devise::SessionsController.layout "home"
+      Devise::RegistrationsController.layout "home"
+      Devise::ConfirmationsController.layout "home"
+    end
   end
 end
