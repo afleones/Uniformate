@@ -1,14 +1,22 @@
 <div class="container">
+    <h1 class="text-center"><%= @articulo.nombre %></h1>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-          <h1 class="text-center">Articulo</h1>
-            <%= @articulo.nombre %>
-            <div>
-              <%= @articulo.cantidad %>
-            </div>
-            <div class="">
-              <%= link_to "Editar", edit_articulo_path(@articulo) , class:"btn btn-warning" %> - <%= link_to "Eliminar", @articulo, method: :delete , class:"btn btn-info" %> - <%= link_to "Atras", articulos_path(@articulo) , class:"btn btn-danger" %>
-            </div>
-        </div>
+          <table class="table table-striped">
+            <tr>
+              <th class="active">Codigo</th>
+              <th class="active">Nombre</th>
+              <th class="active">Cantidad</th>
+              <th class="active">Precio</th>
+              <th class="active">Editar</th>
+            </tr>
+                <tr>
+                <td class="active"><%= @articulo.id %></td>
+                <td class=""><%= @articulo.nombre %></td>
+                <td class=""><%= @articulo.cantidad %></td>
+                <td>  <%= @articulo.valor %></td>
+                <td><%= link_to "Editar", edit_articulo_path(@articulo) , class:"btn btn-warning"%> </td>
+                </tr>
+          </table>
     </div>
 </div>
+<%= link_to "Atras", articulos_path(@articulo) , class:"btn btn-danger" %>
