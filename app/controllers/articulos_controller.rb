@@ -41,6 +41,6 @@ class ArticulosController < ApplicationController
   end
   private
   def articulo_params
-    params.require(:articulo).permit(:nombre,:cantidad)
+    params.require(:articulo).permit(:nombre,:cantidad,:valor)
   end
 end
