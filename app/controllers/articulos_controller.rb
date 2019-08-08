@@ -29,7 +29,7 @@ class ArticulosController < ApplicationController
       @articulo = Articulo.find(params[:id])
       if @articulo.update(articulo_params)
         redirect_to @articulo
-      else
+      else 
         render :edit
       end
   end
@@ -41,6 +41,6 @@ class ArticulosController < ApplicationController
   end
   private
   def articulo_params
-    params.require(:articulo).permit(:nombre,:cantidad,:valor)
+    params.require(:articulo).permit(:nombre,:cantidad,:valor,:codigo)
   end
 end

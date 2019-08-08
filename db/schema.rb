@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20190806063313) do
     t.integer "cantidad"
     t.bigint "categorias_id"
     t.integer "valor"
+    t.integer "codigo"
     t.index ["categorias_id"], name: "index_articulos_on_categorias_id"
   end
 
