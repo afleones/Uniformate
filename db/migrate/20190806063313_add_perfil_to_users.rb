@@ -4,5 +4,4 @@ class AddPerfilToUsers < ActiveRecord::Migration[5.1]
     add_column :users, :nombre, :string
     add_column :users, :telefono, :string
   end  
-  add_column :articulos, :valor, :integer
 end
