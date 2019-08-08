@@ -1,4 +1,7 @@
 class ArticulosController < ApplicationController
+
+  before_action :authenticate_user!
+
   #GET /articulos
   def index
     @articulos = Articulo.all
@@ -29,7 +32,7 @@ class ArticulosController < ApplicationController
       @articulo = Articulo.find(params[:id])
       if @articulo.update(articulo_params)
         redirect_to @articulo
-      else 
+      else
         render :edit
       end
   end
