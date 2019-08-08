@@ -2,6 +2,7 @@
   <h1 class="text-center">Articulos</h1>
       <table class="table table-striped">
         <tr>
+          <th class="active">Id</th>
           <th class="active">Codigo</th>
           <th class="active">Nombre</th>
           <th class="active">Cantidad</th>
@@ -9,6 +10,7 @@
         </tr>
             <% @articulos.each do |articulo| %>
             <tr>
+              <td><%= articulo.id %></td>
             <td><%= articulo.codigo %></td>
             <td class=""><%= link_to articulo.nombre, articulo %></td>
             <td class=""><%= articulo.cantidad %></td>
