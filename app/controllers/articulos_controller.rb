@@ -1,4 +1,7 @@
 class ArticulosController < ApplicationController
+
+  before_action :authenticate_user!
+
   #GET /articulos
   def index
     @articulos = Articulo.all
