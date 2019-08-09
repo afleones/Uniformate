@@ -1,0 +1,6 @@
+<%= simple_form_for @categoria, url: categorias_path do |f| %>
+  <%= f.input :nombre %>
+  <div class="form-group text-center">
+      <%= f.submit "Guardar Cambios", class:"btn btn-warning" %>
+  </div>
+<% end %>

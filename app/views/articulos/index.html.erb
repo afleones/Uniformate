@@ -10,11 +10,11 @@
         </tr>
             <% @articulos.each do |articulo| %>
             <tr>
-              <td><%= articulo.id %></td>
-            <td><%= articulo.codigo %></td>
-            <td class=""><%= link_to articulo.nombre, articulo %></td>
-            <td class=""><%= articulo.cantidad %></td>
-            <td><%= articulo.valor %></td>
+            <td><%= link_to articulo.id , articulo%></td>
+            <td><%= link_to articulo.codigo, articulo %></td>
+            <td><%= link_to articulo.nombre, articulo %></td>
+            <td><%=  link_to articulo.cantidad , articulo%></td>
+            <td><%=  link_to articulo.valor, articulo %></td>
             </tr>
         <%end%>
       </table>

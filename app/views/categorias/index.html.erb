@@ -1,0 +1,16 @@
+<div class="table-responsive">
+  <h1 class="text-center">Categorias</h1>
+    <table class="table table-striped">
+      <tr>
+        <th class="active">Id</th>
+        <th class="active">Nombre</th>
+      </tr>
+      <% @categorias.each do |categorias| %>
+        <tr>
+          <td><%= link_to categorias.id, categoria_path(categorias.id)  %></td>
+          <td class=""><%= link_to categorias.nombre, categoria_path(categorias.id) %></td>
+        </tr>
+      <%end%>
+    </table>
+</div>
+<%= link_to "Registrar Categoria", new_categoria_path(@categorias) , class:"btn btn-success btn-lg" %>

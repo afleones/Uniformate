@@ -4,10 +4,13 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   devise_for :users
-  root to: "articulos#index"
-
-
 
   resources :articulos
+
+  resources :categorias
+
+  resources :categorias do
+    resources :articulos, module: :categorias, only: [:index]
+  end
 
 end

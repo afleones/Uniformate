@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190808154852) do
+ActiveRecord::Schema.define(version: 20190809144810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20190808154852) do
     t.integer "cantidad"
     t.integer "codigo"
     t.integer "valor"
+    t.bigint "categoria_id"
+    t.index ["categoria_id"], name: "index_articulos_on_categoria_id"
+  end
+
+  create_table "categoria", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,4 +47,5 @@ ActiveRecord::Schema.define(version: 20190808154852) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "articulos", "categoria", column: "categoria_id"
 end
