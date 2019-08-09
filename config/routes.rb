@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   get 'home/index'
   devise_for :users
 
-
-  resources :categorias
   resources :articulos
 
+  resources :categorias
 
+  resources :categorias do
+    resources :articulos, module: :categorias, only: [:index]
+  end
 
 end

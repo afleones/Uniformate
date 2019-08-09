@@ -1,4 +1,5 @@
 class CategoriasController < ApplicationController
+
   #GET /Categoria
   def index
     @categorias = Categoria.all
@@ -20,7 +21,7 @@ class CategoriasController < ApplicationController
   def create
     @categoria = Categoria.new(categoria_params)
     if @categoria.save
-    redirect_to @categorias
+      redirect_to categoria_path(@categoria)
     else
       render :new
     end
@@ -29,7 +30,7 @@ class CategoriasController < ApplicationController
   def update
       @categoria = Categoria.find(params[:id])
       if @categoria.update(articulo_params)
-        redirect_to @categoria
+        respond_with @categoria
       else
         render :edit
       end

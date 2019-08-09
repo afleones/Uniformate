@@ -7,13 +7,15 @@
               <th class="active">Nombre</th>
               <th class="active">Cantidad</th>
               <th class="active">Precio</th>
+              <th class="active">Categoria</th>
               <th class="active">Editar</th>
             </tr>
                 <tr>
                 <td class="active"><%= @articulo.codigo %></td>
-                <td class=""><%= @articulo.nombre %></td>
-                <td class=""><%= @articulo.cantidad %></td>
-                <td>  <%= @articulo.valor %></td>
+                <td class="active"><%= @articulo.nombre %></td>
+                <td class="active"><%= @articulo.cantidad %></td>
+                <td class="active"><%= @articulo.valor %></td>
+                <td class="active"><%= @articulo.categoria.nombre %></td>
                 <td><%= link_to "Editar", edit_articulo_path(@articulo) , class:"btn btn-warning"%> </td>
                 </tr>
           </table>
