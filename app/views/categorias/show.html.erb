@@ -1,0 +1,16 @@
+<div class="container">
+    <h1 class="text-center"><%= @categorias.nombre%></h1>
+    <div class="row">
+          <table class="table table-striped">
+            <tr>
+              <th class="active">Nombre</th>
+              <th class="active">Editar</th>
+            </tr>
+                <tr>
+                <td class=""><%= @categorias.nombre %></td>
+                <td><%= link_to "Editar", edit_categoria_path(@categorias) , class:"btn btn-warning"%> </td>
+                </tr>
+          </table>
+    </div>
+</div>
+<%= link_to "Atras", categorias_path(@categorias) , class:"btn btn-danger" %>
