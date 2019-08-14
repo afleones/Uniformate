@@ -1,0 +1,2 @@
+class Talla < ApplicationRecord
+end

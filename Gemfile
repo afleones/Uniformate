@@ -41,3 +41,4 @@ gem 'mini_magick'
 gem 'rolify'
 gem "gretel"
 gem "will_paginate"
+gem 'bread', '~> 0.0.13'

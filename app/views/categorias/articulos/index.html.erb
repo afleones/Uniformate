@@ -1,2 +1,13 @@
-<h1 class="text-center"> Todas Los Articulos de La Categorias </h1>
-<p>Aqui Va una tabla de todas los articulos que tiene esta categoria</p>
+<h1 class="text-center">Articulos De La Categorias <%= @categoria.nombre %> </h1>
+<table class="table table-striped">
+  <tr>
+    <th class="active">Id</th>
+    <th class="active">Nombre</th>
+  </tr>
+  <% @articulos.each do |categorias| %>
+    <tr>
+      <td><%= link_to categorias.id, articulo_path(categorias.id)%></td>
+      <td class=""><%= link_to categorias.nombre, articulo_path(categorias.id)%></td>
+    </tr>
+  <%end%>
+</table>
