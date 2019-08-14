@@ -1,14 +1,19 @@
-<header style="width:100%;">
-  <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <%= link_to "Articulos", articulos_path(@articulo), class:"nav-link active" %>
-  </li>
-  <li class="nav-item">
-        <%= link_to "Iniciar Sesion", user_session_path(@user), class:"nav-link active" %>
-  </li>
-  <li class="nav-item">
-        <%= link_to "Registrar", new_user_registration_path(@user), class:"nav-link active" %>
+<h1 class="text-center">HOME</h1>
+
+<ul>
+  <li>
+    <%= link_to('Registrarse', new_user_registration_path) %>
   </li>
 </ul>
-</header>
-<h1 class="text-center">Uniformate</h1>
+
+<ul>
+  <li>
+    <%= link_to('Iniciar Sesion', new_user_session_path) %>
+  </li>
+</ul>
+
+<ul>
+  <li>
+    <%= link_to('Articulos', articulos_path) %>
+  </li>
+</ul>
