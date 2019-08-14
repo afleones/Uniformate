@@ -8,7 +8,7 @@
       <% @categorias.each do |categorias| %>
         <tr>
           <td><%= link_to categorias.id, categoria_path(categorias.id)  %></td>
-          <td class=""><%= link_to categorias.nombre, categoria_path(categorias.id) %></td>
+          <td><%= link_to categorias.nombre, categoria_articulos_path(categorias.id)%></td>
         </tr>
       <%end%>
     </table>

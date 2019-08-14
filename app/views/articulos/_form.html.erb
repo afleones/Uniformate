@@ -14,10 +14,10 @@
       <label for="exampleInputEmail1">Cantidad<%= f.number_field :cantidad,required: true,autofocus: true, min:1 ,input_html: {placeholder: "Escribe La Cantidad De articulo"}, class:'form-control'%></label>
     </div>
     <div class="form-group text-center">
-      <label for="exampleInputEmail1">Valor <%= f.number_field :valor,required: true,autofocus: true, min:1 , class: 'form-control' , input_html: {placeholder: "Escribe el valor Del articulo"}%></label>
+      <label for="exampleInputEmail1">Valor <%= f.number_field :valor,required: true,autofocus: true, min:1 , class: 'form-control' , input_html: {placeholder: "Escribe el valor Del articulo"} %></label>
     </div>
     <div class="form-group text-center">
-    <%= f.association :categoria, label_method: :nombre, value_method: :id , input_html: {class: "form-control input-lg", min:"1" } %>
+    <%= f.association :categoria, label_method: :nombre, value_method: :id , input_html: {class: "input-lg", min:"1" } %>
     </div>
     <div class="form-group text-center">
         <%= f.submit "Guardar Cambios", class:"btn btn-warning" %>

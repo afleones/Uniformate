@@ -25,7 +25,6 @@ class ArticulosController < ApplicationController
   end
   #PUT /articulos/:id
   def update
-
       @articulo = Articulo.find(params[:id])
       if @articulo.update(articulo_params)
         redirect_to @articulo
