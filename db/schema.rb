@@ -23,7 +23,9 @@ ActiveRecord::Schema.define(version: 20190812225029) do
     t.integer "codigo"
     t.integer "valor"
     t.bigint "categoria_id"
+    t.bigint "tallas_id"
     t.index ["categoria_id"], name: "index_articulos_on_categoria_id"
+    t.index ["tallas_id"], name: "index_articulos_on_tallas_id"
   end
 
   create_table "categoria", force: :cascade do |t|
@@ -54,4 +56,5 @@ ActiveRecord::Schema.define(version: 20190812225029) do
   end
 
   add_foreign_key "articulos", "categoria", column: "categoria_id"
+  add_foreign_key "articulos", "tallas", column: "tallas_id"
 end

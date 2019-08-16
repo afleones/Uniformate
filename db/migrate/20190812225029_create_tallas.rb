@@ -5,5 +5,6 @@ class CreateTallas < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_reference :articulos , :tallas , foreign_key: true
   end
 end
