@@ -1,3 +1,3 @@
 class Talla < ApplicationRecord
-  has_many :articulos
+  validates :nombre , presence: true, uniqueness: true
 end

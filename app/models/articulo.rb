@@ -5,5 +5,4 @@ class Articulo < ApplicationRecord
     validates :codigo, presence: true
 
     belongs_to :categoria
-    belongs_to :talla
 end
