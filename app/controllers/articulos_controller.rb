@@ -43,6 +43,6 @@ class ArticulosController < ApplicationController
   end
   private
   def articulo_params
-    params.require(:articulo).permit(:nombre,:cantidad,:valor,:codigo,:categoria_id , :tallas_id)
+    params.require(:articulo).permit(:nombre,:cantidad,:valor,:codigo,:categoria_id)
   end
 end
