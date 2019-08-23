@@ -1,41 +1,30 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Uniformate Inicio</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <% if user_signed_in? %>
-      <li class="nav-item">
-        <%= link_to('salir', destroy_user_session_path, method: :delete, class:"nav-link active") %>
-      </li>
-      <% else %>
-      <li class="nav-item">
-        <%= link_to('Iniciar Sesion', new_user_session_path, class:"nav-link active")%>
-      </li>
-      <% end %>
-      <li class="nav-item">
-        <%= link_to('Registrarse', new_user_registration_path, class:"nav-link") %>
-      </li>
-      <li class="nav-item">
-        <%= link_to('Articulos', articulos_path, class:"nav-link") %>
-      </li>
-      <li class="nav-item dropdown">
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Mantenimiento
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <%= link_to('Articulos', articulos_path, class:"dropdown-item text-primary") %>
-            <a class="dropdown-item- text-primary" href="#">Another action</a>
-            <a class="dropdown-item text-primary" href="#">Something else here</a>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
+<header>
+  <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="col-md-8">
 
+    </div>
 
-<h1>Pagina de inicio</h1>
-<h1>Pagina de inicio</h1>
+    <div class="col-md-4 collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to('salir', destroy_user_session_path, method: :delete, class:"nav-link active") %>
+        </li>
+        <% else %>
+        <li class="nav-item">
+          <%= link_to('Iniciar Sesion', new_user_session_path, class:"nav-link active")%>
+        </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to('Registrarse', new_user_registration_path, class:"nav-link") %>
+        </li>
+        <li class="nav-item">
+          <%= link_to('Articulos', articulos_path, class:"nav-link") %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
