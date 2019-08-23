@@ -1,25 +1,51 @@
-<div class="container">
-    <h1 class="text-center"><%= @articulo.nombre %></h1>
-    <div class="row">
-          <table class="table table-striped">
-            <tr>
-              <th class="active">Codigo</th>
-              <th class="active">Nombre</th>
-              <th class="active">Cantidad</th>
-              <th class="active">Precio</th>
-              <th class="active">Categoria</th>
-              <th class="active">Editar</th>
-            </tr>
-                <tr>
-                <td class="active"><%= @articulo.codigo %></td>
-                <td class="active"><%= @articulo.nombre %></td>
-                <td class="active"><%= @articulo.cantidad %></td>
-                <td class="active"><%= @articulo.valor %></td>
-                <td class="active"><%= @articulo.categoria.nombre %></td>
-                <td><%= link_to "Editar", edit_articulo_path(@articulo) , class:"btn btn-warning"%> </td>
-                </tr>
-          </table>
-    </div>
+<div class="col-md-4">
+
+  <h1 class="text-center"><%= @articulo.nombre %></h1>
+  <div class="form-group text-center be-red white">
+    <form>
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Codigo:</label>
+      </div>
+
+      <%= @articulo.codigo %>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Nombre:</label>
+      </div>
+
+      <%= @articulo.nombre %>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad:</label>
+      </div>
+
+      <%= @articulo.cantidad %>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Valor:</label>
+      </div>
+
+      <%= @articulo.valor %>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Categoria:</label>
+      </div>
+
+      <%= @articulo.categoria.nombre %><br><br>
+
+      <%= link_to "Editar", edit_articulo_path(@articulo) , class:"btn btn-outline-danger btn-lg btn-block"%><br><br>
+
+    </form>
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+</div>
+
+<div class="col-md-4">
+
 </div>
 <%= link_to "volver", articulos_path(@articulo) , class:"btn btn-danger" %>
 <%= link_to "Ir A Categorias", categorias_path(@categoria) , class:"btn btn-danger"%>
