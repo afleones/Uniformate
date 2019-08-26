@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190812225029) do
+ActiveRecord::Schema.define(version: 20190825211818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,18 @@ ActiveRecord::Schema.define(version: 20190812225029) do
     t.integer "codigo"
     t.integer "valor"
     t.bigint "categoria_id"
+    t.bigint "especialidades_id"
     t.index ["categoria_id"], name: "index_articulos_on_categoria_id"
+    t.index ["especialidades_id"], name: "index_articulos_on_especialidades_id"
   end
 
   create_table "categoria", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "especialidades", force: :cascade do |t|
     t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,4 +62,5 @@ ActiveRecord::Schema.define(version: 20190812225029) do
   end
 
   add_foreign_key "articulos", "categoria", column: "categoria_id"
+  add_foreign_key "articulos", "especialidades", column: "especialidades_id"
 end

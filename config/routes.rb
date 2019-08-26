@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get 'home/index'
   root to: "home#index"
 
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
   resources :articulos
   resources :categorias
   resources :tallas
+  resources :especialidades
 
   resources :categorias do
   resources :articulos, module: :categorias, only: [:index]

@@ -1,0 +1,16 @@
+<div class="table-responsive">
+  <h1 class="text-center">Especialidades</h1>
+      <table class="table table-striped">
+        <tr>
+          <th class="active">Id</th>
+          <th class="active">Nombre</th>
+        </tr>
+            <% @especialidades.each do |especialidad| %>
+            <tr>
+            <td><%= link_to especialidad.id , especialidad%></td>
+            <td><%= link_to especialidad.nombre, especialidad %></td>
+            </tr>
+        <%end%>
+      </table>
+</div>
+<%= link_to "Crear Especialidad", new_especialidad_path(@especialidad) , class:"btn btn-success btn-lg" %>

@@ -1,51 +1,34 @@
 <div class="col-md-4">
-
-  <h1 class="text-center"><%= @articulo.nombre %></h1>
-  <div class="form-group text-center be-red white">
-    <form>
-      <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Codigo:</label>
+    <h1 class="text-center"><%= @articulo.nombre %></h1>
+        <div class="form-group text-center be-red white">
+          <form>
+            <div class="form-group row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">Codigo:</label>
+            </div>
+            <%= @articulo.codigo %>
+            <div class="form-group row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">Nombre:</label>
+            </div>
+            <%= @articulo.nombre %>
+            <div class="form-group row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad:</label>
+            </div>
+            <%= @articulo.cantidad %>
+            <div class="form-group row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">Valor:</label>
+            </div>
+            <%= @articulo.valor %>
+            <div class="form-group row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">Categoria:</label>
+            </div>
+            <%= @articulo.categoria.nombre %><br><br>
+            <%= link_to "Editar", edit_articulo_path(@articulo) , class:"btn btn-outline-danger btn-lg btn-block"%><br><br>
+          </form>
       </div>
-
-      <%= @articulo.codigo %>
-
-      <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Nombre:</label>
-      </div>
-
-      <%= @articulo.nombre %>
-
-      <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad:</label>
-      </div>
-
-      <%= @articulo.cantidad %>
-
-      <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Valor:</label>
-      </div>
-
-      <%= @articulo.valor %>
-
-      <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Categoria:</label>
-      </div>
-
-      <%= @articulo.categoria.nombre %><br><br>
-
-      <%= link_to "Editar", edit_articulo_path(@articulo) , class:"btn btn-outline-danger btn-lg btn-block"%><br><br>
-
-    </form>
 </div>
-
-</div>
-
-<div class="col-md-4">
-
-</div>
-
-<div class="col-md-4">
-
-</div>
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+      </div>
 <%= link_to "volver", articulos_path(@articulo) , class:"btn btn-danger" %>
 <%= link_to "Ir A Categorias", categorias_path(@categoria) , class:"btn btn-danger"%>

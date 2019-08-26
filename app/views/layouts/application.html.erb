@@ -1,166 +1,152 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Proyecto Formativo</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
-  <%= stylesheet_link_tag    'adminlte/adminlte.min.css' %>
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
-  <!-- Google Font: Source Sans Pro -->
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <title>Proyecto Formativo</title>
+      <!-- Tell the browser to be responsive to screen width -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+      <!-- Ionicons -->
+      <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+      <!-- Tempusdominus Bbootstrap 4 -->
+      <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+      <!-- iCheck -->
+      <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+      <!-- JQVMap -->
+      <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+      <!-- Theme style -->
+      <%= stylesheet_link_tag    'adminlte/adminlte.min.css' %>
+      <!-- overlayScrollbars -->
+      <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+      <!-- Daterange picker -->
+      <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+      <!-- summernote -->
+      <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+      <!-- Google Font: Source Sans Pro -->
+      <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <style type="text/css">/* Chart.js */
+    @keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style>
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-<style type="text/css">/* Chart.js */
-@keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style>
+    <%= csrf_meta_tags %>
 
-<%= csrf_meta_tags %>
-
-<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
   <body class="sidebar-mini layout-fixed sidebar-open" style="height: auto;">
-  <div class="wrapper">
-    <header>
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light border-bottom">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#">
-            <i class="fas fa-bars"></i></a>
-          </li>
-          <li class="nav-item d-none d-sm-inline-block">
-          <%= link_to "Home", home_index_path(@articulo),class:"nav-link" %>
-          </li>
-          <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contacto</a>
-          </li>
-        </ul>
-        <form class="form-inline ml-3">
-          <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">
-            <div class="input-group-append">
-              <button class="btn btn-navbar" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
-        </form>
-      <ul class="navbar-nav ml-auto">
-        <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">5</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Brad Diesel
-                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">Call me whenever you can...</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Horas Ago</p>
+      <header>
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light border-bottom">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" data-widget="pushmenu" href="#">
+                  <i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                <%= link_to "Home", home_index_path(@articulo),class:"nav-link" %>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                  <a href="#" class="nav-link">Contacto</a>
+                </li>
+            </ul>
+            <form class="form-inline ml-3">
+                <div class="input-group input-group-sm">
+                  <input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">
+                  <div class="input-group-append">
+                    <button class="btn btn-navbar" type="submit">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    John Pierce
-                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">I got your mensaje bro</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Horas Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Nora Silvester
-                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">The subject goes here</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Horas Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Mensajes</a>
-          </div>
-        </li>
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">10</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">10 Notificaciones</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 Nuevos Mensajes
-              <span class="float-right text-muted text-sm">3 Min</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 7 friend requests
-              <span class="float-right text-muted text-sm">12 Horas</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 2 nuevos reportes
-              <span class="float-right text-muted text-sm">2 Dias</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See Todas Notificaciones</a>
-          </div>
-        </li>
-        <% if user_signed_in? %>
-        <li>
-        <%= link_to('salir', destroy_user_session_path, method: :delete) %>
-        </li>
-        <% else %>
-        <li>
-        <%= link_to('Iniciar Sesion', new_user_session_path) %>
-        </li>
-        <% end %>
-      </ul>
-    </nav>
-  </header>
-    <!-- /.navbar -->
+            </form>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                      <a class="nav-link" data-toggle="dropdown" href="#">
+                          <i class="far fa-comments"></i>
+                          <span class="badge badge-danger navbar-badge">5</span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                          <a href="#" class="dropdown-item">
+                              <div class="media">
+                                <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">Brad Diesel
+                                      <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">Call me whenever you can...</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Horas Ago</p>
+                                </div>
+                              </div>
+                          </a>
+                        <div class="dropdown-divider"></div>
+                          <a href="#" class="dropdown-item">
+                              <div class="media">
+                                  <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                  <div class="media-body">
+                                      <h3 class="dropdown-item-title">John Pierce
+                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                      </h3>
+                                      <p class="text-sm">I got your mensaje bro</p>
+                                      <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Horas Ago</p>
+                                  </div>
+                              </div>
+                          </a>
+                        <div class="dropdown-divider"></div>
+                          <a href="#" class="dropdown-item">
+                              <div class="media">
+                                  <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                  <div class="media-body">
+                                      <h3 class="dropdown-item-title">Nora Silvester
+                                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                                      </h3>
+                                      <p class="text-sm">The subject goes here</p>
+                                      <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Horas Ago</p>
+                                  </div>
+                              </div>
+                          </a>
+                        <div class="dropdown-divider"></div>
+                          <a href="#" class="dropdown-item dropdown-footer">See All Mensajes</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                      <i class="far fa-bell"></i>
+                      <span class="badge badge-warning navbar-badge">10</span>
+                    </a>
+                  <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header">10 Notificaciones</span>
+                      <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> 4 Nuevos Mensajes
+                            <span class="float-right text-muted text-sm">3 Min</span>
+                        </a>
+                      <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-users mr-2"></i> 7 friend requests
+                            <span class="float-right text-muted text-sm">12 Horas</span>
+                        </a>
+                      <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-file mr-2"></i> 2 nuevos reportes
+                            <span class="float-right text-muted text-sm">2 Dias</span>
+                        </a>
+                      <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See Todas Notificaciones</a>
+                  </div>
+                </li>
+                <% if user_signed_in? %>
+                  <li>
+                  <%= link_to('salir', destroy_user_session_path, method: :delete) %>
+                  </li>
+                <% else %>
+                  <li>
+                  <%= link_to('Iniciar Sesion', new_user_session_path) %>
+                  </li>
+                <% end %>
+            </ul>
+        </nav>
+      </header>
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
@@ -180,7 +166,6 @@
               <a href="#" class="d-block">Grupo 2</a>
             </div>
           </div>
-
           <!-- Sidebar Menu -->
           <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -203,6 +188,9 @@
                   </li>
                   <li class="nav-item">
                     <p><%= link_to "Tallas", tallas_path(@talla), class:"nav-link active"%></p>
+                  </li>
+                  <li class="nav-item">
+                    <p><%= link_to "Especialidades", especialidades_path(@especialidad), class:"nav-link active"%></p>
                   </li>
                 </ul>
               </li>
@@ -551,51 +539,48 @@
           </div><!-- /.container-fluid -->
         </div>
       </div>
-  <!-- /.content-wrapper -->
+      <!-- /.content-wrapper -->
 
-  <% if signed_in? %>
-    <%= link_to "Salir", destroy_user_session_path, method: :delete %>
-  <% else %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <!-- jQuery UI 1.11.4 -->
-  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-  <script>$.widget.bridge('uibutton', $.ui.button)</script>
-  <!-- Bootstrap 4 -->
-  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- ChartJS -->
-  <script src="plugins/chart.js/Chart.min.js"></script>
-  <!-- Sparkline -->
-  <script src="plugins/sparklines/sparkline.js"></script>
-  <!-- JQVMap -->
-  <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-  <script src="plugins/jqvmap/maps/jquery.vmap.world.js"></script>
-  <!-- jQuery Knob Chart -->
-  <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
-  <!-- daterangepicker -->
-  <script src="plugins/moment/moment.min.js"></script>
-  <script src="plugins/daterangepicker/daterangepicker.js"></script>
-  <!-- Tempusdominus Bootstrap 4 -->
-  <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-  <!-- Summernote -->
-  <script src="plugins/summernote/summernote-bs4.min.js"></script>
-  <!-- overlayScrollbars -->
-  <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-  <!-- FastClick -->
-  <script src="plugins/fastclick/fastclick.js"></script>
-  <!-- AdminLTE App -->
-  <script src="dist/js/adminlte.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="dist/js/pages/dashboard.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="dist/js/demo.js"></script>
-
-    <%= javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js")%>
-
-<%end%>
+      <% if signed_in? %>
+        <%= link_to "Salir", destroy_user_session_path, method: :delete %>
+      <% else %>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          <!-- jQuery -->
+          <script src="plugins/jquery/jquery.min.js"></script>
+          <!-- jQuery UI 1.11.4 -->
+          <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+          <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+          <script>$.widget.bridge('uibutton', $.ui.button)</script>
+          <!-- Bootstrap 4 -->
+          <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+          <!-- ChartJS -->
+          <script src="plugins/chart.js/Chart.min.js"></script>
+          <!-- Sparkline -->
+          <script src="plugins/sparklines/sparkline.js"></script>
+          <!-- JQVMap -->
+          <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+          <script src="plugins/jqvmap/maps/jquery.vmap.world.js"></script>
+          <!-- jQuery Knob Chart -->
+          <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+          <!-- daterangepicker -->
+          <script src="plugins/moment/moment.min.js"></script>
+          <script src="plugins/daterangepicker/daterangepicker.js"></script>
+          <!-- Tempusdominus Bootstrap 4 -->
+          <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+          <!-- Summernote -->
+          <script src="plugins/summernote/summernote-bs4.min.js"></script>
+          <!-- overlayScrollbars -->
+          <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+          <!-- FastClick -->
+          <script src="plugins/fastclick/fastclick.js"></script>
+          <!-- AdminLTE App -->
+          <script src="dist/js/adminlte.js"></script>
+          <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+          <script src="dist/js/pages/dashboard.js"></script>
+          <!-- AdminLTE for demo purposes -->
+          <script src="dist/js/demo.js"></script>
+          <%= javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js")%>
+    <%end%>
   </body>
-
 </html>
