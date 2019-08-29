@@ -5,7 +5,6 @@
           <p class="login-box-msg">*Advertencia: Asegurese de Llenar todos los campos</p>
             <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                <%= f.error_notification %>
-
                 <div class="form-group">
                   <%= f.input :nombre,required: true,autofocus: true,placeholder: "Escriba su nombre Completo",input_html: { autocomplete: "nombre", class: "form-control"}%>
                 </div>

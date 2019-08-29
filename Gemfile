@@ -42,3 +42,4 @@ gem 'rolify'
 gem "gretel"
 gem "will_paginate"
 gem 'bread', '~> 0.0.13'
+gem 'table_print', '~> 1.5' , '>= 1.5.6'

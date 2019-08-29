@@ -21,8 +21,10 @@ class ArticulosController < ApplicationController
   def create
     @articulo = Articulo.new(articulo_params)
     if @articulo.save
-    redirect_to @articulo
+      flash[:success] = "Articulo registrado correctamente"
+      redirect_to @articulo
     else
+      flash[:alert] = "Problemas con la grabación"
       render :new
     end
   end
@@ -30,8 +32,10 @@ class ArticulosController < ApplicationController
   def update
       @articulo = Articulo.find(params[:id])
       if @articulo.update(articulo_params)
+        flash[:success]="Articulo actualizado"
         redirect_to @articulo
       else
+        flash[:alert]="Error al actualizar el Articulo (Verifique los campos)"
         render :edit
       end
   end

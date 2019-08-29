@@ -1,4 +1,5 @@
 class CategoriasController < ApplicationController
+  respond_to :html
   #GET /categorias
   def index
     @categorias = Categoria.all
@@ -18,8 +19,10 @@ class CategoriasController < ApplicationController
   def create
     @categoria = Categoria.new(categoria_params)
     if @categoria.save
-    redirect_to @categoria
+      flash[:success] = "Categoria registrada correctamente"
+      respond_with @categoria
     else
+      flash[:alert] = "Problemas con la grabación"
       render :new
     end
   end
@@ -27,8 +30,10 @@ class CategoriasController < ApplicationController
   def update
       @categoria = Categoria.find_by id: params[:id]
       if @categoria.update(categoria_params)
+        flash[:success]="Categoria actualizada"
         redirect_to action: :categoria
       else
+        flash[:alert]="Error al actualizar la categoria (Verifique los campos)"
         render :edit
       end
   end
