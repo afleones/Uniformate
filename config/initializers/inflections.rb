@@ -1,4 +1,5 @@
 ActiveSupport::Inflector.inflections do |inflect|
+  inflect.irregular 'categoria', 'categorias'
   inflect.irregular 'especialidad', 'especialidades'
 end
 
