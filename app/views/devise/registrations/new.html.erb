@@ -12,6 +12,12 @@
                   <%= f.input :email,required: true,autofocus: true,placeholder: "Escriba su Correo Electronico",input_html: { autocomplete: "email", class: "form-control"}%>
                 </div>
                 <div class="form-group">
+                    <%= f.association :tipo_documento, label_method: :nombre, value_method: :id , input_html: {class: "input-lg", min:"1" } %>
+                </div>
+                <div class="form-group">
+                  <%= f.input :documento,required: true,autofocus: true,placeholder: "Escriba su numero de documento",input_html: { autocomplete: "email", class: "form-control"}%>
+                </div>
+                <div class="form-group">
                   <%= f.input :telefono,required: true,autofocus: true,placeholder: "Escriba su Numero de Telefono",input_html: { autocomplete: "telefono", class: "form-control"}%>
                 </div>
                 <div class="form-group">
