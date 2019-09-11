@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190904144114) do
+ActiveRecord::Schema.define(version: 20190911201711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,9 +23,7 @@ ActiveRecord::Schema.define(version: 20190904144114) do
     t.integer "codigo"
     t.integer "valor"
     t.bigint "categoria_id"
-    t.bigint "tallas_id"
     t.index ["categoria_id"], name: "index_articulos_on_categoria_id"
-    t.index ["tallas_id"], name: "index_articulos_on_tallas_id"
   end
 
   create_table "categorias", force: :cascade do |t|
@@ -41,12 +39,6 @@ ActiveRecord::Schema.define(version: 20190904144114) do
   end
 
   create_table "tallas", force: :cascade do |t|
-    t.string "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tipo_documento", force: :cascade do |t|
     t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,6 +68,4 @@ ActiveRecord::Schema.define(version: 20190904144114) do
     t.index ["tipo_documento_id"], name: "index_users_on_tipo_documento_id"
   end
 
-  add_foreign_key "articulos", "categorias"
-  add_foreign_key "articulos", "tallas", column: "tallas_id"
 end
