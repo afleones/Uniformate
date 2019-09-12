@@ -1,6 +1,9 @@
 class ArticulosController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_role_user, except: [:index]
+
+  respond_to :html
 
   #GET /articulos
   def index
@@ -20,9 +23,9 @@ class ArticulosController < ApplicationController
   #POST /articulos
   def create
     @articulo = Articulo.new(articulo_params)
-    if @articulo.save
+    if @articulo.save!
       flash[:success] = "Articulo registrado correctamente"
-      redirect_to @articulo
+      respond_with @articulo
     else
       flash[:alert] = "Problemas con la grabación"
       render :new
@@ -30,23 +33,39 @@ class ArticulosController < ApplicationController
   end
   #PUT /articulos/:id
   def update
-      @articulo = Articulo.find(params[:id])
+    if @articulo.has_role? :admin
+      @articulo = Articulo.find_by id: params[:id]
       if @articulo.update(articulo_params)
         flash[:success]="Articulo actualizado"
-        redirect_to @articulo
+        redirect_to action: :articulo
       else
-        flash[:alert]="Error al actualizar el Articulo (Verifique los campos)"
+          flash[:alert]="Error al actualizar el Articulo (Verifique los campos)"
         render :edit
       end
+    else
+      flash[:alert]="No tiene permisos para acceder a esa vista"
+      render :edit
+    end
   end
+
   #DELETE /articulos/:id
   def destroy
     @articulo = Articulo.find(params[:id]).destroy
     flash[:success] = "Articulo Eliminado"
     redirect_to articulos_path
   end
+
   private
   def articulo_params
     params.require(:articulo).permit(:nombre,:cantidad,:valor,:codigo,:categoria_id)
+  end
+
+  def authenticate_role_user
+    @user = User.find(current_user.id)
+    if @user.has_role? :admin
+    else
+      flash[:alert]="No tiene permisos para acceder a esa vista"
+      redirect_to articulos_path(@articulo)
+    end
   end
 end

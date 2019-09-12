@@ -11,19 +11,18 @@
       <ul class="navbar-nav">
         <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to('salir', destroy_user_session_path, method: :delete, class:"nav-link active") %>
-        </li>
-        <% else %>
-        <li class="nav-item">
-          <%= link_to('Iniciar Sesion', new_user_session_path, class:"nav-link active")%>
-        </li>
-        <% end %>
-        <li class="nav-item">
-          <%= link_to('Registrarse', new_user_registration_path, class:"nav-link") %>
-        </li>
-        <li class="nav-item">
           <%= link_to('Articulos', articulos_path, class:"nav-link") %>
         </li>
+        <% if current_user.perfil.thumb.present?%>
+              <%= image_tag current_user.perfil.thumb, class: "fa fa-user NavBar-Nav-icon btn-PopUpLogin fa header-menu-mobile-icon"%>
+        <%else%>
+              <i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i>
+        <%end%>
+        <%= link_to "CERRAR SESIÓN", destroy_user_session_path, method: :delete, class: "btn btn-danger header-menu-mobile-btn"%>
+        <%else%>
+        <a href="<%= new_user_session_path %>" class="btn btn-nar header-menu-mobile-btn">INICIAR SESIÓN</a>
+              <%= link_to "REGISTRARSE", new_user_registration_path, class: "btn btn-nar header-menu-mobile-btn"%>
+      <% end %>
       </ul>
     </div>
   </nav>

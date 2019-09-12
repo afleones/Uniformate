@@ -1,4 +1,8 @@
 class CategoriasController < ApplicationController
+
+  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_role_user, except: [:index]
+
   respond_to :html
   #GET /categorias
   def index
@@ -15,10 +19,11 @@ class CategoriasController < ApplicationController
   def edit
     @categoria = Categoria.find(params[:id])
   end
+
   #POST /categorias
   def create
     @categoria = Categoria.new(categoria_params)
-    if @categoria.save
+    if @categoria.save!
       flash[:success] = "Categoria registrada correctamente"
       respond_with @categoria
     else
@@ -28,18 +33,32 @@ class CategoriasController < ApplicationController
   end
   #PUT /categorias/:id
   def update
+    if @categoria.has_role? :admin
       @categoria = Categoria.find_by id: params[:id]
       if @categoria.update(categoria_params)
         flash[:success]="Categoria actualizada"
         redirect_to action: :categoria
       else
-        flash[:alert]="Error al actualizar la categoria (Verifique los campos)"
+        flash[:alert]="Error al actualizar"
         render :edit
       end
+    else
+      flash[:alert]="No tiene permisos para acceder a esa vista"
+      render :edit
+    end
   end
 
   private
   def categoria_params
     params.require(:categoria).permit(:nombre, :categoria)
+  end
+
+  def authenticate_role_user
+    @user = User.find(current_user.id)
+    if @user.has_role? :admin
+    else
+      flash[:alert]="No tiene permisos para acceder a esa vista"
+      redirect_to categorias_path(@categoria)
+    end
   end
 end

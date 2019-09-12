@@ -1,3 +1,4 @@
+
 <div class="table-responsive">
   <h1 class="text-center">Articulos</h1>
       <table class="table table-striped">
@@ -16,7 +17,10 @@
             <td><%=  link_to articulo.cantidad , articulo%></td>
             <td><%=  link_to articulo.valor, articulo %></td>
             </tr>
-        <%end%>
       </table>
+      <%end%>
 </div>
-<%= link_to "Crear Articulo", new_articulo_path(@articulo) , class:"btn btn-success btn-lg" %>
+<%if current_user.has_role? :admin%>
+  <%= link_to "Crear Articulo", new_articulo_path(@articulo) , class:"btn btn-success btn-lg" %>
+<%else%>
+<%end%>
