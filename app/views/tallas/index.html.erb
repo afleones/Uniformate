@@ -14,4 +14,7 @@
         <%end%>
       </table>
 </div>
-<%= link_to "Crear talla", new_talla_path(@talla) , class:"btn btn-success btn-lg" %>
+<% if current_user.has_role? :admin%>
+  <%= link_to "Crear talla", new_talla_path(@talla) , class:"btn btn-success btn-lg" %>
+<%else%>
+<%end%>

@@ -6,9 +6,9 @@
 
   <div class="col-md-4">
 
-    <%= simple_form_for @categoria, url: categorias_path do |f| %>
-      <%= f.input :nombre %>
-        <%= f.input :categoria, class: "form-control"%>
+    <%= simple_form_for @categoria, html: { class: 'form-horizontal' } do |f| %>
+      <%= f.input :nombre, class: "form-control" %>
+        <%= f.input :foto, class: "form-control"%>
       <div class="form-group">
           <%= f.submit "Guardar Cambios", class:"btn btn-outline-primary btn-lg btn-block" %>
       </div>

@@ -1,3 +1,4 @@
+<% if signed_in? %>
 <div class="table-responsive">
   <% breadcrumb :categorias %>
   <h1 class="text-center">Categorias</h1>
@@ -14,4 +15,7 @@
       <%end%>
     </table>
 </div>
-<%= link_to "Registrar Categoria", new_categoria_path(@categoria) , class:"btn btn-success btn-lg" %>
+      <% if current_user.has_role? :admin%>
+        <%= link_to "Registrar Categoria", new_categoria_path(@categoria) , class:"btn btn-success btn-lg" %>
+      <%end%>
+<%end%>

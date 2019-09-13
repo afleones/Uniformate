@@ -1,3 +1,4 @@
+<% if signed_in? %>
 <div class="table-responsive">
   <% breadcrumb :articulos %>
   <h1 class="text-center">Articulos</h1>
@@ -9,15 +10,19 @@
           <th class="active">Cantidad</th>
           <th class="active">Precio</th>
         </tr>
-            <% @articulos.each do |articulo| %>
+        <% @articulos.each do |articulo| %>
             <tr>
-            <td><%= link_to articulo.id , articulo%></td>
-            <td><%= link_to articulo.codigo, articulo %></td>
-            <td><%= link_to articulo.nombre, articulo %></td>
-            <td><%=  link_to articulo.cantidad , articulo%></td>
-            <td><%=  link_to articulo.valor, articulo %></td>
-            </tr>
+              <td><%= link_to articulo.id , articulo_path(articulo.id)%></td>
+              <td><%= link_to articulo.codigo , articulo_path(articulo.id)%></td>
+              <td><%= link_to articulo.nombre , articulo_path(articulo.id)%></td>
+              <td><%= link_to articulo.cantidad , articulo_path(articulo.id)%></td>
+              <td><%= link_to articulo.valor , articulo_path(articulo.id)%></td>
         <%end%>
+            </tr>
       </table>
+
+<%end%>
+      <%if current_user.has_role? :admin%>
+        <%= link_to "Crear Articulo", new_articulo_path(@articulo) , class:"btn btn-success btn-lg" %>
+    <%end%>
 </div>
-<%= link_to "Crear Articulo", new_articulo_path(@articulo) , class:"btn btn-success btn-lg" %>
