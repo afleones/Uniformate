@@ -22,7 +22,8 @@ class ArticulosController < ApplicationController
   end
   #POST /articulos
   def create
-    @articulo = Articulo.new(articulo_params)
+    if current_user.has_role? :admin
+        @articulo = Articulo.new(articulo_params)
     if @articulo.save!
       flash[:success] = "Articulo registrado correctamente"
       respond_with @articulo
@@ -31,13 +32,14 @@ class ArticulosController < ApplicationController
       render :new
     end
   end
+end
   #PUT /articulos/:id
   def update
-    if @articulo.has_role? :admin
+    if current_user.has_role? :admin
       @articulo = Articulo.find_by id: params[:id]
       if @articulo.update(articulo_params)
         flash[:success]="Articulo actualizado"
-        redirect_to action: :articulo
+        respond_with @articulo
       else
           flash[:alert]="Error al actualizar el Articulo (Verifique los campos)"
         render :edit

@@ -33,11 +33,11 @@ class CategoriasController < ApplicationController
   end
   #PUT /categorias/:id
   def update
-    if @categoria.has_role? :admin
+    if current_user.has_role? :admin
       @categoria = Categoria.find_by id: params[:id]
       if @categoria.update(categoria_params)
         flash[:success]="Categoria actualizada"
-        redirect_to action: :categoria
+        respond_with @categoria
       else
         flash[:alert]="Error al actualizar"
         render :edit
@@ -50,7 +50,7 @@ class CategoriasController < ApplicationController
 
   private
   def categoria_params
-    params.require(:categoria).permit(:nombre, :categoria)
+    params.require(:categoria).permit(:nombre, :foto)
   end
 
   def authenticate_role_user

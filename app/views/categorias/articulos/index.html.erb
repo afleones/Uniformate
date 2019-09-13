@@ -11,3 +11,6 @@
     </tr>
   <%end%>
 </table>
+<% if current_user.has_role? :admin%>
+  <%= link_to "Editar Categoria", edit_categoria_path(@categoria) , class:"btn btn-success btn-lg" %>
+<%end%>

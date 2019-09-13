@@ -23,7 +23,7 @@
                           input_html: { autocomplete: "current-password", class: "form-control", placeholder: "Ingrese  Contraseña"} %>
             </div>
             <div class="row">
-              <div class="col-8">
+              <div class="col-md-5">
                 <div class="icheck-primary d-inline">
                   <%= f.input :remember_me, as: :boolean, type: "checkbox", id: "remember" if devise_mapping.rememberable? %>
                 </div>
@@ -37,7 +37,7 @@
               </div>
             </div>
           <div class="form-group">
-            <div class="col-md-12">
+            <div class="col-md-6">
             <%= render "devise/shared/links" %>
             </div>
           </div>
@@ -45,4 +45,3 @@
     </div>
   </div>
   </body>
-  </html>

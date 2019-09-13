@@ -30,7 +30,7 @@ class EspecialidadesController < ApplicationController
   end
   #PUT /especialidad/:id
   def update
-    if @especialidad.has_role? :admin
+    if current_user.has_role? :admin
       @especialidad = Especialidad.find_by id: params[:id]
       if @especialidad.update(especialidad_params)
         flash[:success]="Articulo actualizado"

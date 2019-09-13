@@ -20,8 +20,8 @@ class TallasController < ApplicationController
   def create
     @talla = Talla.new(talla_params)
     if @talla.save!
-    flash[:success] = "Especialidad registrado correctamente"
-    redirect_to @talla
+      flash[:success] = "Especialidad registrado correctamente"
+      redirect_to @talla
     else
       flash[:alert] = "Problemas con la grabación"
       render :new
@@ -29,7 +29,7 @@ class TallasController < ApplicationController
   end
   #PUT /talla/:id
   def update
-    if @talla.has_role? :admin
+    if current_user.has_role? :admin
       @talla = Talla.find(params[:id])
       if @talla.update(talla_params)
         flash[:success]="Talla actualizada"
