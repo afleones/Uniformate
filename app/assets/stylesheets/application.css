@@ -3,4 +3,4 @@
 @import "font-awesome";/*@import "font-awesome-sprockets";*/
 @import "main";
 @import "toastr/toastr.min.css";
-@import "assets/adminlte.min.css";
+@import "adminlte/adminlte.min.css";
