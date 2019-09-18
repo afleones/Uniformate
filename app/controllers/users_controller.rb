@@ -27,4 +27,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:nombre, :email, :tipo_documento, :documento, :password, :telefono, :perfil)
   end
 
+  def tipo_documento
+      @tipo = TipoDocumento.all
+  end
+
 end
