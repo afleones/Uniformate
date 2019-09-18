@@ -768,3 +768,24 @@ login.html & newaccount.html*/
   background-color: #fff;
   border: 0px;
 }
+
+.nom_gru{
+  text-align:center;padding-left:4px;
+  color: blue;
+}
+
+.down{
+  margin-top:22px
+}
+
+.color_norm{
+  color:#000
+}
+
+#edit_grupo_1{
+  margin-top:25px
+}
+
+#new_grupo{
+  margin-top:25px
+}
