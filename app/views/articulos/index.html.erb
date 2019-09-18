@@ -22,31 +22,40 @@
                 </tr>
           </table>
       <%else%>
-      <section class="down">
+      <div class="container">
         <% breadcrumb :articulos %>
-          <h2 class="text-center text-light"> Articulos en Venta</h2>
-            <div class="container">
-              <div class="col-md-4">
-                <% @articulos.each do |articulo| %>
-                  <%= link_to categoria_articulos_path(articulo) do %>
-                      <div class="full-width post">
-              					<figure class="full-width post-img">
-              					  <!-- Tamaño de la imagen 248x186 pixeles-->
-                          <% if articulo.imagen.present? %>
-              						    <%= image_tag articulo.imagen.thumb.url%>
-                          <%else%>
-                              <%= image_tag 'DefaultImage'%>
-                          <%end%>
-              					</figure>
-              					<div class="full-width post-info">
-              						<p class="full-width post-info-price nom_gru"><%=articulo.nombre%></p>
-              					</div>
-                        <% end %>
-                      </div>
-                <% end %>
-              </div>
+        <h1 class="text-center">Articulos en Venta</h1>
+            <div class="col-md-10">
+              <% @articulos.each do |articulo| %>
+              <%= link_to articulo_path(articulo) do %>
+              <div class="full-width post">
+                <figure class="full-width post-img">
+                  <!-- Tamaño de la imagen 248x186 pixeles-->
+                  <% if articulo.imagen.present? %>
+                      <%= image_tag articulo.imagen.thumb.url%>
+                  <%else%>
+                      <%= image_tag 'DefaultImage'%>
+                  <%end%>
+                </figure>
+                <div class="post-info">
+                  <div class="row">
+                      <p class="full-width post-info-price nom_gru"><%=articulo.nombre%></p>
+                  </div>
+                  <div class="row">
+
+                     <p class="full-width post-info-price nom_gru"><label>precio: $</label><%=articulo.valor%></p>
+                  </div>
+                   <div class="row">
+
+                     <p class="full-width post-info-price nom_gru"><label>Cantidad:</label> <%=articulo.cantidad%></p>
+                   </div>
+
+                </div>
             </div>
-      </section>
-<%end%>
+        <%end%>
+      <%end%>
+  <%end%>
 <%end%>
 </div>
+
+</<div></div>
