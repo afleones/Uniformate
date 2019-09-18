@@ -62,15 +62,30 @@
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+      <% if user_signed_in? %>
+          <% if current_user.has_role? :admin %>
+          <li class="dropdown messages-menu">
+            <a href="<%=articulos_path%>">
+            <span class="fa fa-user-circle-o"></span>ADMINISTRACION
+            </a>
+          </li>
+        <%else%>
+        <li class="dropdown notifications-menu">
+          <a href="<%=articulos_path%>">
+            <i class="fas fa-tools"></i>
+            <span></span>COMPRAR
+          </a>
+        </li>
+        <%end%>
+      <%end%>
         <% if user_signed_in? %>
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <% if current_user.perfil.thumb.present?%>
             <%= image_tag current_user.perfil.thumb,  class: "user-image", alt: "User Image"%>
           <%else%>
-          <img src="assets/images/user2-160x160.jpg" class="user-image" alt="User Image">
+          <%=image_tag 'user2-160x160.jpg', class: "user-image", alt: "User Image"%>
           <%end%>
-
               <% if user_signed_in? %>
               <span class="hidden-xs"><%= current_user.nombre.upcase%></span>
             </a>
@@ -81,10 +96,9 @@
                 <% if current_user.perfil.thumb.present?%>
                   <%= image_tag current_user.perfil.thumb,  class: "img-circle", alt: "User Image"%>
                 <%else%>
-                <img src="assets/images/user2-160x160.jpg" class="img-circle" alt="User Image">
+                  <%=image_tag 'user2-160x160.jpg', class: "img-circle", alt: "img-circle"%>
                 <%end%>
                 <% if user_signed_in? %>
-
                 <p>
                   <%= current_user.nombre.upcase%>
                   <small>Miembro desde: <%= l current_user.created_at, format: :long%></small>
@@ -109,10 +123,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<%=articulos_path%>" class="btn btn-success">Articulos</a>
+                  <a href="<%= edit_user_registration_path %>" class="btn btn-success">Editar Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <%= link_to "CERRAR SESIÓN", destroy_user_session_path, method: :delete, class: "btn btn-danger header-menu-mobile-btn"%>
+                  <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "btn btn-danger header-menu-mobile-btn"%>
                 </div>
               </li>
             </ul>
@@ -137,6 +151,7 @@
     </nav>
   </header>
     <div class="container">
+      <%= custom_bootstrap_flash %>
       <%=yield%>
     </div>
 
@@ -162,6 +177,14 @@
 <%= javascript_include_tag 'dist/js/dashboard2.js'%>
 <!-- AdminLTE for demo purposes -->
 <%= javascript_include_tag 'dist/js/demo.js'%>
+
+<!--<footer class="full-width footer">
+  <div class="full-width">
+    <b>Version</b> 2.4.18
+  </div>
+  <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+  reserved.
+</footer>-->
 
 </body>
 

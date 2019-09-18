@@ -1,5 +1,15 @@
-<div class="container">
-  <% breadcrumb :articulos_new %>
-  <h1 class="text-center">Crear Articulos</h1>
-  <%= render "form" %>  <%= link_to "Atras", articulos_path(@articulo) , class:"btn btn-danger" %>
-</div>
+<% if signed_in?%>
+  <% if current_user.has_role? :admin%>
+      <div class="container">
+        <% breadcrumb :articulos_new %>
+          <h1 class="text-center">Crear Articulos</h1>
+        <%= render "form" %>
+          <div class="row">
+              <%=link_to "<-- Atras", articulos_path(@articulo) , class:"btn btn-danger"%>
+          </div>
+        <br>
+    </div>
+  <%end%>
+  <%else%>
+  
+<%end%>

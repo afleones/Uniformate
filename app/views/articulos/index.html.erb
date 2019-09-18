@@ -1,28 +1,52 @@
 <% if signed_in? %>
-<div class="table-responsive">
-  <% breadcrumb :articulos %>
-  <h1 class="text-center">Articulos</h1>
-      <table class="table table-striped">
-        <tr>
-          <th class="active">Id</th>
-          <th class="active">Codigo</th>
-          <th class="active">Nombre</th>
-          <th class="active">Cantidad</th>
-          <th class="active">Precio</th>
-        </tr>
-        <% @articulos.each do |articulo| %>
+  <%if current_user.has_role? :admin %>
+    <div class="table-responsive">
+      <% breadcrumb :articulos %>
+      <h1 class="text-center">Articulos</h1>
+          <table class="table table-striped">
             <tr>
-              <td><%= link_to articulo.id , articulo_path(articulo.id)%></td>
-              <td><%= link_to articulo.codigo , articulo_path(articulo.id)%></td>
-              <td><%= link_to articulo.nombre , articulo_path(articulo.id)%></td>
-              <td><%= link_to articulo.cantidad , articulo_path(articulo.id)%></td>
-              <td><%= link_to articulo.valor , articulo_path(articulo.id)%></td>
-        <%end%>
+              <th class="active">Id</th>
+              <th class="active">Codigo</th>
+              <th class="active">Nombre</th>
+              <th class="active">Cantidad</th>
+              <th class="active">Precio</th>
             </tr>
-      </table>
-
+            <% @articulos.each do |articulo| %>
+                <tr>
+                  <td><%= link_to articulo.id , articulo_path(articulo.id)%></td>
+                  <td><%= link_to articulo.codigo , articulo_path(articulo.id)%></td>
+                  <td><%= link_to articulo.nombre , articulo_path(articulo.id)%></td>
+                  <td><%= link_to articulo.cantidad , articulo_path(articulo.id)%></td>
+                  <td><%= link_to articulo.valor , articulo_path(articulo.id)%></td>
+            <%end%>
+                </tr>
+          </table>
+      <%else%>
+      <section class="down">
+        <% breadcrumb :articulos %>
+          <h2 class="text-center text-light"> Articulos en Venta</h2>
+            <div class="container">
+              <div class="col-md-4">
+                <% @articulos.each do |articulo| %>
+                  <%= link_to categoria_articulos_path(articulo) do %>
+                      <div class="full-width post">
+              					<figure class="full-width post-img">
+              					  <!-- Tamaño de la imagen 248x186 pixeles-->
+                          <% if articulo.imagen.present? %>
+              						    <%= image_tag articulo.imagen.thumb.url%>
+                          <%else%>
+                              <%= image_tag 'DefaultImage'%>
+                          <%end%>
+              					</figure>
+              					<div class="full-width post-info">
+              						<p class="full-width post-info-price nom_gru"><%=articulo.nombre%></p>
+              					</div>
+                        <% end %>
+                      </div>
+                <% end %>
+              </div>
+            </div>
+      </section>
 <%end%>
-      <%if current_user.has_role? :admin%>
-        <%= link_to "Crear Articulo", new_articulo_path(@articulo) , class:"btn btn-success btn-lg" %>
-    <%end%>
+<%end%>
 </div>
