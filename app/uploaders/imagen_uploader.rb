@@ -10,7 +10,7 @@ class ImagenUploader < CarrierWave::Uploader::Base
   process resize_to_fill: [800, 800]
 
   version :thumb, :if => :image? do
-    process resize_to_fill: [248, 186]
+    process resize_to_fill: [180, 180]
   end
 
   def store_dir
