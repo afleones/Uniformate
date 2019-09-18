@@ -27,6 +27,9 @@
               <div class="form-group">
                   <%= f.association :categoria, label_method: :nombre, value_method: :id , input_html: {class: "input-lg", min:"1" } %>
               </div>
+              <div class="form-group">
+                <%= f.input :estado, as: :radio_buttons, collection: [['Activo',true],['Inactivo', false]]%>
+              </div>
               <div class="form-group text-center">
                     <%= f.submit "Guardar Cambios", class:"btn btn-outline-primary btn-lg btn-block" %>
               </div>

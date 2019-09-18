@@ -9,6 +9,7 @@
           <th class="active">Nombre</th>
           <th class="active">Cantidad</th>
           <th class="active">Precio</th>
+          <th class="active">Estado</th>
         </tr>
         <% @articulos.each do |articulo| %>
             <tr>
@@ -17,6 +18,7 @@
               <td><%= link_to articulo.nombre , articulo_path(articulo.id)%></td>
               <td><%= link_to articulo.cantidad , articulo_path(articulo.id)%></td>
               <td><%= link_to articulo.valor , articulo_path(articulo.id)%></td>
+              <td><%= articulo.estado ? "Activo" : "Inactivo"%></td>
         <%end%>
             </tr>
       </table>

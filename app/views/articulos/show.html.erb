@@ -4,25 +4,23 @@
         <div class="form-group text-center be-red white">
           <form>
             <div class="form-group row">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Codigo:</label>
+              <label for="staticEmail" class="col-sm-2 col-form-label">Codigo:</label><%= @articulo.codigo %><br>
             </div>
-            <%= @articulo.codigo %>
             <div class="form-group row">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Nombre:</label>
+              <label for="staticEmail" class="col-sm-2 col-form-label">Nombre:</label> <%= @articulo.nombre %> <br>
             </div>
-            <%= @articulo.nombre %>
             <div class="form-group row">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad:</label>
+              <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad:</label> <%= @articulo.cantidad %><br>
             </div>
-            <%= @articulo.cantidad %>
             <div class="form-group row">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Valor:</label>
+              <label for="staticEmail" class="col-sm-2 col-form-label">Valor:</label><%= @articulo.valor %>
             </div>
-            <%= @articulo.valor %>
             <div class="form-group row">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Categoria:</label>
+              <label for="staticEmail" class="col-sm-2 col-form-label">Categoria:</label> <%= @articulo.categoria.nombre %>
             </div>
-            
+            <div class="form-group row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">Estado:</label> <%= @articulo.estado ? "Activo" : "Inactivo"%>
+            </div>
             <%= link_to "Editar", edit_articulo_path(@articulo) , class:"btn btn-outline-danger btn-lg btn-block"%><br><br>
           </form>
       </div>

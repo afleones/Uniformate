@@ -1,42 +1,35 @@
 <div class="container">
   <br>
-    <div class="register-logo"><b>Registrate</b>Aqui</div>
-
+    <div class="register-logo"><b>Registrate</b> Aqui</div>
       <div class="card">
         <div class="card-body register-card-body">
-          <p class="login-box-msg">*Advertencia: Asegurese de Llenar todos los campos</p>
+          <p class="login-box-msg">Advertencia: Asegurese de Llenar todos los campos</p>
             <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                <%= f.error_notification %>
-
                <div class="row">
                  <div class="col-md-6">
-                     <%= f.input :nombre,required: true,autofocus: true,placeholder: "Escriba su nombre Completo",input_html: { autocomplete: "nombre", class: "form-control"}%>
-
+                     <%= f.input :nombre,required: true,autofocus: true,placeholder: "Escriba Sus Nombres Completo",input_html: { autocomplete: "nombre", class: "form-control"}%>
                  </div>
                  <div class="col-md-6">
-                   <label>Apellidos</label>
-                   <input type="text" class="form-control" placeholder="Apellidos" required>
+                    <%= f.input :apellidos,required: true,autofocus: true,placeholder: "Escriba Sus Apellidos",input_html: { autocomplete: "apellido", class: "form-control"}%>
                  </div>
                </div>
-
                <div class="row">
                  <div class="col-md-6">
-                   <%= f.input :email,required: true,autofocus: true,placeholder: "Escriba su Correo Electronico",input_html: { autocomplete: "email", class: "form-control"}%>
+                   <%= f.input :email,required: true,autofocus: true,placeholder: "Escriba Su Correo Electronico",input_html: { autocomplete: "email", class: "form-control"}%>
                  </div>
                  <div class="col-md-6">
-                   <%= f.input :telefono,required: true,autofocus: true,placeholder: "Escriba su Numero de Telefono",input_html: { autocomplete: "telefono", class: "form-control"}%>
+                   <%= f.input :telefono,required: true,autofocus: true,placeholder: "Escriba Su Numero De Telefono",input_html: { autocomplete: "telefono", class: "form-control"}%>
                  </div>
                </div>
-
                <div class="row">
                  <div class="col-md-6">
-                    <%= f.association :tipo_documento, label_method: :nombre, value_method: :id , input_html: {class: "form-control", min:"1" } %>
+                    <%= f.association :tipo_documento, prompt: "Selecione..." ,  label_method: :nombre, value_method: :id , input_html: {class: "form-control", min:"1" } %>
                  </div>
                  <div class="col-md-6">
-                     <%= f.input :documento,required: true,autofocus: true,placeholder: "Escriba su numero de documento",input_html: { autocomplete: "email", class: "form-control"}%>
+                     <%= f.input :documento,required: true,autofocus: true,placeholder: "Escriba su numero de documento",input_html: { autocomplete: "documento", class: "form-control"}%>
                  </div>
                </div>
-
               <div class="row">
                 <div class="col-md-6">
                     <%= f.input :password,required: true,label: "Contraseña",
@@ -51,7 +44,6 @@
                     input_html: { autocomplete: "new-password", class: "form-control" } %>
                 </div>
               </div>
-
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.input :perfil, label: "Foto de Perfil (Opcional)", class: "form-control"%>
@@ -63,17 +55,14 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="row">
                   <div class="col-md-3">
-
-              </div>
-                    <div class="col-md-6">
+                  </div>
+                  <div class="col-md-6">
                       <%= f.button :submit, "Registrarme", class:"btn btn-primary btn-block btn-flat"%>
-                </div>
-                <div class="col-md-3">
-
-            </div>
+                  </div>
+                  <div class="col-md-3">
+                  </div>
          <%end%>
               <div class="col-md-4"></div>
         </div>

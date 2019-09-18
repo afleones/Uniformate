@@ -59,7 +59,7 @@ end
 
   private
   def articulo_params
-    params.require(:articulo).permit(:nombre,:cantidad,:valor,:codigo,:categoria_id)
+    params.require(:articulo).permit(:nombre, :estado , :cantidad,:valor,:codigo,:categoria_id)
   end
 
   def authenticate_role_user

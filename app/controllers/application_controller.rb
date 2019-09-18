@@ -9,7 +9,7 @@
   protected
 
   def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:nombre, :email, :telefono, :password, :tipo_documento_id, :documento, :email, :perfil)}
-      devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :nombre, :telefono, :password, :tipo_documento_id, :current_password, :password_confirmation)}
+      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:nombre, :apellidos, :email, :telefono, :password, :tipo_documento_id, :documento, :email, :perfil)}
+      devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :nombre, :apellidos , :telefono, :password, :tipo_documento_id, :current_password, :password_confirmation)}
   end
 end
