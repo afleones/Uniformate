@@ -1,5 +1,10 @@
 <div class="container">
-  <h1 class="text-center">Editar<br> <%=@categoria.nombre %></h1><br><br>
+  <div class="row">
+    <div class="col-md-11">
+          <h1 class="text-center">Editar Categoria: "<%=@categoria.nombre%>"</h1><br><br>
+    </div>
+  </div>
+
   <%= render "form" %>
-</div>
-<%= link_to "Atras", categoria_path , class:"btn btn-danger" %>
+</div><br>
+<%= link_to "<--Atras", categoria_path , class:"btn btn-danger" %> <br> <br>

@@ -1,21 +1,46 @@
 <% if signed_in? %>
-<div class="table-responsive">
-  <% breadcrumb :categorias %>
-  <h1 class="text-center">Categorias</h1>
-    <table class="table table-striped">
-      <tr>
-        <th class="active">Id</th>
-        <th class="active">Nombre</th>
-      </tr>
-      <% @categorias.each do |categorias| %>
-        <tr>
-          <td><%= link_to categorias.id, categoria_path(categorias.id)  %></td>
-          <td><%= link_to categorias.nombre, categoria_articulos_path(categorias.id)%></td>
-        </tr>
-      <%end%>
-    </table>
-</div>
-      <% if current_user.has_role? :admin%>
-        <%= link_to "Registrar Categoria", new_categoria_path(@categoria) , class:"btn btn-success btn-lg" %>
-      <%end%>
+  <% if current_user.has_role? :admin %>
+    <div class="table-responsive">
+      <% breadcrumb :categorias %>
+      <h1 class="text-center">Categorias</h1>
+        <table class="table table-striped">
+          <tr>
+            <th class="active">Id</th>
+            <th class="active">Nombre</th>
+          </tr>
+          <% @categorias.each do |categoria| %>
+            <tr>
+              <td><%= link_to categoria.id, categoria_path(categoria.id)  %></td>
+              <td><%= link_to categoria.nombre, categoria_articulos_path(categoria.id)%></td>
+          <%end%>
+            </tr>
+          </table>
+    </div>
+    <%else%>
+            <div class="container">
+              <% breadcrumb :categorias %>
+              <h1 class="text-center">Categorias</h1>
+            <div class="col-md-10">
+                    <% @categorias.each do |categoria| %>
+                    <%= link_to categoria_path(categoria) do %>
+                    <div class="full-width post">
+                      <figure class="full-width post-img">
+                        <!-- Tamaño de la imagen 248x186 pixeles-->
+                        <% if categoria.foto.present? %>
+                            <%= image_tag categoria.foto.thumb.url%>
+                        <%else%>
+                            <%= image_tag 'default-150x150'%>
+                        <%end%>
+                      </figure>
+                      <div class="post-info">
+                        <div class="row">
+                            <p class="full-width post-info-price nom_gru"><%=categoria.nombre%></p>
+                        </div>
+                      </div>
+                  </div>
+                  <%end%>
+              <%end%>
+          <%end%>
+        </div>
+      </div>
 <%end%>
