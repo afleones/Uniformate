@@ -22,7 +22,6 @@ class ArticulosController < ApplicationController
   end
   #POST /articulos
   def create
-    if current_user.has_role? :admin
         @articulo = Articulo.new(articulo_params)
     if @articulo.save!
       flash[:success] = "Articulo registrado correctamente"
@@ -32,10 +31,9 @@ class ArticulosController < ApplicationController
       render :new
     end
   end
-end
   #PUT /articulos/:id
   def update
-    if current_user.has_role? :admin
+    if @user.has_role? :admin
       @articulo = Articulo.find_by id: params[:id]
       if @articulo.update(articulo_params)
         flash[:success]="Articulo actualizado"
@@ -59,7 +57,7 @@ end
 
   private
   def articulo_params
-    params.require(:articulo).permit(:nombre,:cantidad,:valor,:codigo,:categoria_id)
+    params.require(:articulo).permit(:nombre,:cantidad,:valor,:codigo,:categoria_id,:imagen)
   end
 
   def authenticate_role_user

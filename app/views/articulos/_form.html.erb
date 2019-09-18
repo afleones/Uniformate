@@ -1,37 +1,63 @@
-<div class = "row">
-    <div class="col-md-4">
-    </div>
-      <div class="col-md-4">
+<div class="container">
+  <div class = "row">
+      <div class="col-md-12">
         <%= simple_form_for(@articulo) do |f| %>
           <% @articulo.errors.full_messages.each do |message| %>
             <div class="form-group text-center be-red white">
-            * <%= message %>
+            <%= message %>
             </div>
           <%end%>
-              <div class="form-group">
-                  <label for="exampleInputEmail1">Nombre</label>
-                  <%= f.text_field :nombre,required: true,autofocus: true,input_html: {placeholder: "Titulo"}, class:'form-control'%>
+          <div class="row">
+            <div class="col-md-5">
+              <label>Nombre</label>
+              <%= f.text_field :nombre, required: true,
+                  autofocus: true, class:"form-control", placeholder: "Nombre del Articulo"%>
+            </div>
+            <div class="col-md-5">
+              <label>Codigo</label>
+              <%= f.number_field :codigo, required: true,autofocus: true, min:1,
+              class: 'form-control', placeholder: "Codigo del Articulo"%>
+            </div>
+          </div>
+            <br>
+          <div class="row">
+            <div class="col-md-5">
+              <label>Cantidad</label>
+                  <%= f.number_field :cantidad,required: true, autofocus: true, min:1, class:"form-control", placeholder: "Escribe La Cantidad De articulo"%>
+            </div>
+            <div class="col-md-5">
+              <label>Valor (Precio $)</label>
+              <%= f.number_field :valor,required: true,autofocus: true, min:1 , class: "form-control", placeholder: "Escribe el valor Del articulo", hint: "Escriba el valor del Articulo sin puntos ni comas."%>
+            </div>
+          </div>
+            <br>
+
+            <div class="row">
+              <div class="col-md-5">
+                <%= f.association :categoria, label_method: :nombre, value_method: :id, min:"1"%>
+            </div>
+
+            <div class="col-md-5">
+              <%= f.input :imagen, required: true, class:"form-control", autofocus: true%>
+            </div>
               </div>
-              <div class="form-group">
-                  <label for="exampleInputEmail1">Codigo</label>
-                  <%= f.number_field :codigo,required: true,autofocus: true, min:1 , class: 'form-control' , input_html: {placeholder: "Escribe el codigo Del articulo"}%>
+
+                <br>
+
+            <div class="row">
+              <div class="col-md-4">
               </div>
-              <div class="form-group">
-                  <label for="exampleInputEmail1">Cantidad</label>
-                  <%= f.number_field :cantidad,required: true,autofocus: true, min:1 ,input_html: {placeholder: "Escribe La Cantidad De articulo"}, class:'form-control'%>
+              <div class="col-md-4">
+                <%= f.submit "Guardar Cambios", class:"btn btn-success" %>
               </div>
-              <div class="form-group">
-                  <label for="exampleInputEmail1">Valor</label>
-                  <%= f.number_field :valor,required: true,autofocus: true, min:1 , class: 'form-control' , input_html: {placeholder: "Escribe el valor Del articulo"} %>
+              <div class="col-md-4">
               </div>
-              <div class="form-group">
-                  <%= f.association :categoria, label_method: :nombre, value_method: :id , input_html: {class: "input-lg", min:"1" } %>
-              </div>
-              <div class="form-group text-center">
-                    <%= f.submit "Guardar Cambios", class:"btn btn-outline-primary btn-lg btn-block" %>
-              </div>
+            </div>
+
+
+        </div>
+
+  </div>
+
         <%end%>
       </div>
-    <div class="col-md-4">
-    </div>
-</div>

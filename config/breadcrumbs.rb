@@ -40,8 +40,8 @@ crumb :categoria_show do |categoria|
 end
 
 crumb :categoria_articulos do |categoria, articulos|
-  link "#{categoria.nombre}Articulos", categoria_articulos_path
-  parent :categorias, categoria
+  link "#{categoria.nombre}", categoria_articulos_path
+  parent :categorias, categoria, articulos
 end
 
 crumb :categoria_edit do |categoria|
