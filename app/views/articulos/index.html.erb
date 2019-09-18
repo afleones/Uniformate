@@ -1,61 +1,61 @@
-<% if signed_in? %>
-  <%if current_user.has_role? :admin %>
-    <div class="table-responsive">
-      <% breadcrumb :articulos %>
-      <h1 class="text-center">Articulos</h1>
-          <table class="table table-striped">
-            <tr>
-              <th class="active">Id</th>
-              <th class="active">Codigo</th>
-              <th class="active">Nombre</th>
-              <th class="active">Cantidad</th>
-              <th class="active">Precio</th>
-            </tr>
-            <% @articulos.each do |articulo| %>
-                <tr>
-                  <td><%= link_to articulo.id , articulo_path(articulo.id)%></td>
-                  <td><%= link_to articulo.codigo , articulo_path(articulo.id)%></td>
-                  <td><%= link_to articulo.nombre , articulo_path(articulo.id)%></td>
-                  <td><%= link_to articulo.cantidad , articulo_path(articulo.id)%></td>
-                  <td><%= link_to articulo.valor , articulo_path(articulo.id)%></td>
-            <%end%>
-                </tr>
-          </table>
-      <%else%>
-      <div class="container">
+<div class="container">
+  <% if signed_in? %>
+    <%if current_user.has_role? :admin %>
+      <div class="table-responsive">
         <% breadcrumb :articulos %>
-        <h1 class="text-center">Articulos en Venta</h1>
-            <div class="col-md-10">
+        <h1 class="text-center">Articulos</h1>
+            <table class="table table-striped">
+              <tr>
+                <th class="active">Id</th>
+                <th class="active">Codigo</th>
+                <th class="active">Nombre</th>
+                <th class="active">Cantidad</th>
+                <th class="active">Precio</th>
+              </tr>
               <% @articulos.each do |articulo| %>
-              <%= link_to articulo_path(articulo) do %>
-              <div class="full-width post">
-                <figure class="full-width post-img">
-                  <!-- Tamaño de la imagen 248x186 pixeles-->
-                  <% if articulo.imagen.present? %>
-                      <%= image_tag articulo.imagen.thumb.url%>
-                  <%else%>
-                      <%= image_tag 'default-150x150'%>
-                  <%end%>
-                </figure>
-                <div class="post-info">
-                  <div class="row">
-                      <p class="full-width post-info-price nom_gru"><%=articulo.nombre%></p>
-                  </div>
-                  <div class="row">
+                  <tr>
+                    <td><%= link_to articulo.id , articulo_path(articulo.id)%></td>
+                    <td><%= link_to articulo.codigo , articulo_path(articulo.id)%></td>
+                    <td><%= link_to articulo.nombre , articulo_path(articulo.id)%></td>
+                    <td><%= link_to articulo.cantidad , articulo_path(articulo.id)%></td>
+                    <td><%= link_to articulo.valor , articulo_path(articulo.id)%></td>
+              <%end%>
+                  </tr>
+            </table>
+      </div>
 
-                     <p class="full-width post-info-price nom_gru"><label>precio: $</label><%=articulo.valor%></p>
-                  </div>
-                   <div class="row">
-
-                     <p class="full-width post-info-price nom_gru"><label>Cantidad:</label> <%=articulo.cantidad%></p>
-                   </div>
-
+        <%else%>
+          <% breadcrumb :articulos %>
+          <h1 class="text-center">Articulos en Venta</h1>
+              <div class="col-md-10">
+                <% @articulos.each do |articulo| %>
+                <%= link_to articulo_path(articulo) do %>
+                <div class="full-width post">
+                    <figure class="full-width post-img">
+                      <!-- Tamaño de la imagen 248x186 pixeles-->
+                      <% if articulo.imagen.present? %>
+                          <%= image_tag articulo.imagen.thumb.url%>
+                      <%else%>
+                          <%= image_tag 'default-150x150'%>
+                      <%end%>
+                    </figure>
                 </div>
-            </div>
-        <%end%>
-      <%end%>
-  <%end%>
-<%end%>
-</div>
+                  <div class="post-info">
+                    <div class="row">
+                        <p class="full-width post-info-price nom_gru"><%=articulo.nombre%></p>
+                    </div>
+                    <div class="row">
 
-</<div></div>
+                       <p class="full-width post-info-price nom_gru"><label>precio: $</label><%=articulo.valor%></p>
+                    </div>
+                     <div class="row">
+                       <p class="full-width post-info-price nom_gru"><label>Cantidad:</label> <%=articulo.cantidad%></p>
+                     </div>
+                  </div>
+              </div>
+          <%end%>
+        <%end%>
+    <%end%>
+  <%end%>
+
+</div>

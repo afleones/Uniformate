@@ -1,23 +1,23 @@
-<% if signed_in? %>
-  <% if current_user.has_role? :admin %>
-    <div class="table-responsive">
-      <% breadcrumb :categorias %>
-      <h1 class="text-center">Categorias</h1>
-        <table class="table table-striped">
-          <tr>
-            <th class="active">Id</th>
-            <th class="active">Nombre</th>
-          </tr>
-          <% @categorias.each do |categoria| %>
+<div class="container">
+  <% if signed_in? %>
+    <% if current_user.has_role? :admin %>
+      <div class="table-responsive">
+        <% breadcrumb :categorias %>
+        <h1 class="text-center">Categorias</h1>
+          <table class="table table-striped">
             <tr>
-              <td><%= link_to categoria.id, categoria_path(categoria.id)  %></td>
-              <td><%= link_to categoria.nombre, categoria_articulos_path(categoria.id)%></td>
-          <%end%>
+              <th class="active">Id</th>
+              <th class="active">Nombre</th>
             </tr>
-          </table>
-    </div>
-    <%else%>
-            <div class="container">
+            <% @categorias.each do |categoria| %>
+              <tr>
+                <td><%= link_to categoria.id, categoria_path(categoria.id)  %></td>
+                <td><%= link_to categoria.nombre, categoria_articulos_path(categoria.id)%></td>
+            <%end%>
+              </tr>
+            </table>
+      </div>
+      <%else%>
               <% breadcrumb :categorias %>
               <h1 class="text-center">Categorias</h1>
             <div class="col-md-10">
@@ -32,6 +32,7 @@
                             <%= image_tag 'default-150x150'%>
                         <%end%>
                       </figure>
+                    </div>
                       <div class="post-info">
                         <div class="row">
                             <p class="full-width post-info-price nom_gru"><%=categoria.nombre%></p>
@@ -41,6 +42,5 @@
                   <%end%>
               <%end%>
           <%end%>
-        </div>
-      </div>
-<%end%>
+    <%end%>
+</div>
