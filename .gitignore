@@ -21,3 +21,5 @@
 public/uploads
 *.log
 *.cache
+*.log
+*.cache

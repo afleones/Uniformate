@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190913043531) do
+ActiveRecord::Schema.define(version: 20190917212120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20190913043531) do
     t.integer "codigo"
     t.integer "valor"
     t.bigint "categoria_id"
+    t.string "imagen"
     t.index ["categoria_id"], name: "index_articulos_on_categoria_id"
   end
 

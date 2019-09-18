@@ -33,7 +33,7 @@ class CategoriasController < ApplicationController
   end
   #PUT /categorias/:id
   def update
-    if current_user.has_role? :admin
+    if @user.has_role? :admin
       @categoria = Categoria.find_by id: params[:id]
       if @categoria.update(categoria_params)
         flash[:success]="Categoria actualizada"

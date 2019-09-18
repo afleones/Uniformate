@@ -73,7 +73,7 @@
           <% if current_user.perfil.thumb.present?%>
             <%= image_tag current_user.perfil.thumb,  class: "user-image", alt: "User Image"%>
           <%else%>
-          <img src="assets/images/user2-160x160.jpg" class="user-image" alt="User Image">
+          <%=image_tag 'user2-160x160.jpg', class: "user-image", alt: "User Image"%>
           <%end%>
               <% if user_signed_in? %>
               <span class="hidden-xs"><%= current_user.nombre.upcase%></span>
@@ -84,13 +84,13 @@
               <li class="user-header">
                 <% if current_user.perfil.thumb.present?%>
                   <%= image_tag current_user.perfil.thumb,  class: "img-circle", alt: "User Image"%>
-
+                <%else%>
+                  <%=image_tag 'user2-160x160.jpg', class: "img-circle", alt: "User Image"%>
                 <%end%>
                 <% if user_signed_in? %>
-
                 <p>
                   <%= current_user.nombre.upcase%>
-                  <small>Member since Nov. 2019</small>
+                  <small>Miembro desde: <%= l current_user.created_at, format: :long%></small>
                 </p>
               </li>
               <%end%>
@@ -115,7 +115,7 @@
                   <a href="<%= edit_user_registration_path %>" class="btn btn-success">mi perfil</a>
                 </div>
                 <div class="pull-right">
-                  <%= link_to "CERRAR SESIÓN", destroy_user_session_path, method: :delete, class: "btn btn-danger header-menu-mobile-btn"%>
+                  <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "btn btn-danger header-menu-mobile-btn"%>
                 </div>
               </li>
             </ul>
@@ -141,11 +141,11 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="assets/images/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <%=image_tag 'user2-160x160.jpg', class: "img-circle", alt: "img-circle"%>
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <small><%= current_user.nombre.upcase%></small><br>
+          <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
         </div>
       </div>
       <!-- search form -->
@@ -244,6 +244,7 @@
     </section>
 
       <div class="container">
+        <%= custom_bootstrap_flash %>
           <%=yield%>
       </div>
 
@@ -442,7 +443,35 @@
   <div class="control-sidebar-bg"></div>
 
 </div>
-<!-- ./wrapper -->
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 2.4.18
+  </div>
+  <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+  reserved.
+</footer>
+
+<script>
+  var dummyContent = $('.dummy-content').children(),
+    i;
+
+
+  $('#add-content').click(function(e){
+    e.preventDefault();
+
+    if($(dummyContent[0]).is(":visible")){
+      for(i=0;i<dummyContent.length;i++){
+        $(dummyContent[i]).fadeOut(600);
+      }
+    }
+    else{
+      for(i=0;i<dummyContent.length;i++){
+        $(dummyContent[i]).delay(600*i).fadeIn(600);
+      }
+    }
+
+  });
+</script>
 
 <!-- jQuery 3 -->
 <%= javascript_include_tag 'dist/js/jquery.min.js'%>
@@ -465,13 +494,7 @@
 <%= javascript_include_tag 'dist/js/dashboard2.js'%>
 <!-- AdminLTE for demo purposes -->
 <%= javascript_include_tag 'dist/js/demo.js'%>
-<footer class="main-footer">
-  <div class="pull-right hidden-xs">
-    <b>Version</b> 2.4.18
-  </div>
-  <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-  reserved.
-</footer>
+
 </body>
 
 </html>
