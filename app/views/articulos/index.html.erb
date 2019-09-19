@@ -13,17 +13,16 @@
                 <th class="active">Precio</th>
               </tr>
               <% @articulos.each do |articulo| %>
-                  <tr>
-                    <td><%= link_to articulo.id , articulo_path(articulo.id)%></td>
-                    <td><%= link_to articulo.codigo , articulo_path(articulo.id)%></td>
-                    <td><%= link_to articulo.nombre , articulo_path(articulo.id)%></td>
-                    <td><%= link_to articulo.cantidad , articulo_path(articulo.id)%></td>
-                    <td><%= link_to articulo.valor , articulo_path(articulo.id)%></td>
+                <tr>
+                  <td><%= link_to articulo.id , articulo_path(articulo.id)%></td>
+                  <td><%= link_to articulo.codigo , articulo_path(articulo.id)%></td>
+                  <td><%= link_to articulo.nombre , articulo_path(articulo.id)%></td>
+                  <td><%= link_to articulo.cantidad , articulo_path(articulo.id)%></td>
+                  <td><%= link_to articulo.valor , articulo_path(articulo.id)%></td>
+                </tr>
               <%end%>
-                  </tr>
             </table>
       </div>
-
         <%else%>
           <% breadcrumb :articulos %>
           <h1 class="text-center">Articulos en Venta</h1>
@@ -45,7 +44,6 @@
                         <p class="full-width post-info-price nom_gru"><%=articulo.nombre%></p>
                     </div>
                     <div class="row">
-
                        <p class="full-width post-info-price nom_gru"><label>precio: $</label><%=articulo.valor%></p>
                     </div>
                      <div class="row">
@@ -57,5 +55,4 @@
         <%end%>
     <%end%>
   <%end%>
-
 </div>

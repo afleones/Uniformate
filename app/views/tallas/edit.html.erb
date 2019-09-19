@@ -1,6 +1,5 @@
+<% breadcrumb :talla_edit, @talla %>
 <div class="container">
-  <% breadcrumb :talla_edit, @talla %>
-  <h1 class="text-center">Editar El Articulo <%=@talla.nombre %></h1><br><br>
+  <h1 class="text-center">Editar <%=@talla.nombre %></h1><br><br>
   <%= render "form" %>
 </div>
-<%= link_to "Atras", talla_path(@talla) , class:"btn btn-danger" %>
