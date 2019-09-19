@@ -11,11 +11,9 @@
                <div class="row">
                  <div class="col-md-6">
                      <%= f.input :nombre,required: true,autofocus: true,placeholder: "Escriba su nombre Completo",input_html: { autocomplete: "nombre", class: "form-control"}%>
-
                  </div>
                  <div class="col-md-6">
-                   <label>Apellidos</label>
-                   <input type="text" class="form-control" placeholder="Apellidos" required>
+                   <%= f.input :apellido,required: true,autofocus: true,placeholder: "Escriba su apellido Completo",input_html: { autocomplete: "nombre", class: "form-control"}%>
                  </div>
                </div>
 

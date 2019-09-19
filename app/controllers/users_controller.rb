@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:nombre, :email, :tipo_documento, :documento, :password, :telefono, :perfil)
+    params.require(:user).permit(:nombre, :apellido, :email, :tipo_documento, :documento, :password, :telefono, :perfil)
   end
 
   def tipo_documento
