@@ -1,17 +1,16 @@
+<% breadcrumb :talla_show, @talla %>
 <div class="container">
-  <% breadcrumb :talla_show, @talla %>
-    <h1 class="text-center"><%= @talla.nombre %></h1>
+  <h1 class="text-center"><%= @talla.nombre %></h1>
     <div class="row">
-          <table class="table table-striped">
-            <tr>
-              <th class="active">Nombre</th>
-              <th class="active">Editar</th>
-            </tr>
-                <tr>
-                <td class="active"><%= @talla.nombre %></td>
-                <td><%= link_to "Editar", edit_talla_path(@talla) , class:"btn btn-warning"%> </td>
-                </tr>
-          </table>
+      <table class="table table-striped">
+        <tr>
+          <th class="active">Nombre</th>
+          <th class="active">Editar</th>
+        </tr>
+          <tr>
+            <td class="active"><%= @talla.nombre %></td>
+            <td><%= link_to "Editar", edit_talla_path(@talla) , class:"btn btn-warning"%> </td>
+          </tr>
+      </table>
     </div>
 </div>
-<%= link_to "Atras", tallas_path(@talla) , class:"btn btn-danger" %>

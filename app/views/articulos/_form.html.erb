@@ -10,13 +10,11 @@
           <div class="row">
             <div class="col-md-5">
               <label>Nombre</label>
-              <%= f.text_field :nombre, required: true,
-                  autofocus: true, class:"form-control", placeholder: "Nombre del Articulo"%>
+              <%= f.text_field :nombre, required: true,autofocus: true, class:"form-control", placeholder: "Nombre del Articulo"%>
             </div>
             <div class="col-md-5">
               <label>Codigo</label>
-              <%= f.number_field :codigo, required: true,autofocus: true, min:1,
-              class: 'form-control', placeholder: "Codigo del Articulo"%>
+              <%= f.number_field :codigo, required: true,autofocus: true, min:1,class: 'form-control', placeholder: "Codigo del Articulo"%>
             </div>
           </div>
             <br>
@@ -31,19 +29,15 @@
             </div>
           </div>
             <br>
-
             <div class="row">
               <div class="col-md-5">
                 <%= f.association :categoria, label_method: :nombre, value_method: :id, min:"1"%>
             </div>
-
             <div class="col-md-5">
               <%= f.input :imagen, input_html: {class: "form-control input-lg"}%>
             </div>
               </div>
-
                 <br>
-
             <div class="row">
               <div class="col-md-4">
               </div>
@@ -53,11 +47,7 @@
               <div class="col-md-4">
               </div>
             </div>
-
-
         </div>
-
   </div>
-
         <%end%>
-      </div>
+</div>

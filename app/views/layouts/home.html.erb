@@ -1,191 +1,168 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>UNIFORMATE | V 1.0</title>
-
-  <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_link_tag  params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css")%>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Main -->
-  <%= stylesheet_link_tag  'main.css'%>
-  <!--toastr -->
-  <%= stylesheet_link_tag  'toastr/toastr.min.css'%>
-  <!-- Bootstrap 3.3.7 -->
-  <%= stylesheet_link_tag  'bootstrap/bootstrap.min.css'%>
-  <!-- Font Awesome -->
-  <%= stylesheet_link_tag  'bootstrap/font-awesome.min.css'%>
-  <!-- Ionicons -->
-  <%= stylesheet_link_tag  'bootstrap/ionicons.min.css'%>
-  <!-- jvectormap -->
-  <%= stylesheet_link_tag  'bootstrap/jquery-jvectormap.css'%>
-  <!-- Theme style -->
-  <%= stylesheet_link_tag  'adminlte/adminlte.min.css'%>
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <%= stylesheet_link_tag  'adminlte/_all-skins.min.css'%>
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-  <!-- fonts-->
-  <!-- <link rel="stylesheet" href="public/assets/stylesheet/fonts/fontawesome-webfont.ttf">
-  <link rel="stylesheet" href="public/assets/stylesheet/fonts/fontawesome-webfont.woff">
-  <link rel="stylesheet" href="public/assets/stylesheet/fonts/fontawesome-webfont.woff2"> -->
-
-  <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
-<body class="hold-transition skin-blue sidebar-mini">
-  <header class="main-header">
-
-    <!-- Logo -->
-    <a href="<%=home_index_path%>" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>V</b>1.0</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>UNIFOR</b>MATE</span>
-    </a>
-
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-
-      <!-- Navbar Right Menu -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-      <% if user_signed_in? %>
-          <% if current_user.has_role? :admin %>
-          <li class="dropdown messages-menu">
-            <a href="<%=articulos_path%>">
-            <span class="fa fa-user-circle-o"></span>ADMINISTRACION
-            </a>
-          </li>
-        <%else%>
-        <li class="dropdown notifications-menu">
-          <a href="<%=articulos_path%>">
-            <i class="fas fa-tools"></i>
-            <span></span>COMPRAR
-          </a>
-        </li>
-        <%end%>
-      <%end%>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>UNIFORMATE | V 1.0</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css")%>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Main -->
+    <%= stylesheet_link_tag  'main.css'%>
+    <!--toastr -->
+    <%= stylesheet_link_tag  'toastr/toastr.min.css'%>
+    <!-- Bootstrap 3.3.7 -->
+    <%= stylesheet_link_tag  'bootstrap/bootstrap.min.css'%>
+    <!-- Font Awesome -->
+    <%= stylesheet_link_tag  'bootstrap/font-awesome.min.css'%>
+    <!-- Ionicons -->
+    <%= stylesheet_link_tag  'bootstrap/ionicons.min.css'%>
+    <!-- jvectormap -->
+    <%= stylesheet_link_tag  'bootstrap/jquery-jvectormap.css'%>
+    <!-- Theme style -->
+    <%= stylesheet_link_tag  'adminlte/adminlte.min.css'%>
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <%= stylesheet_link_tag  'adminlte/_all-skins.min.css'%>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  </head>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="<%=home_index_path%>" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>V</b>1.0</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>UNIFOR</b>MATE</span>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
         <% if user_signed_in? %>
-        <li class="dropdown user user-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <% if current_user.perfil.thumb.present?%>
-            <%= image_tag current_user.perfil.thumb,  class: "user-image", alt: "User Image"%>
+            <% if current_user.has_role? :admin %>
+            <li class="dropdown messages-menu">
+              <a href="<%=articulos_path%>">
+              <span class="fa fa-user-circle-o"></span>ADMINISTRACION
+              </a>
+            </li>
           <%else%>
-          <%=image_tag 'user2-160x160.jpg', class: "user-image", alt: "User Image"%>
-          <%end%>
-              <% if user_signed_in? %>
-              <span class="hidden-xs"><%= current_user.nombre.upcase%></span>
+          <li class="dropdown notifications-menu">
+            <a href="<%=articulos_path%>">
+              <i class="fas fa-tools"></i>
+              <span></span>COMPRAR
             </a>
-            <%end%>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <% if current_user.perfil.thumb.present?%>
-                  <%= image_tag current_user.perfil.thumb,  class: "img-circle", alt: "User Image"%>
-                <%else%>
-                  <%=image_tag 'user2-160x160.jpg', class: "img-circle", alt: "img-circle"%>
-                <%end%>
-                <% if user_signed_in? %>
-                <p>
-                  <%= current_user.nombre.upcase%>
-                  <small>Miembro desde: <%= l current_user.created_at, format: :long%></small>
-                </p>
-              </li>
-              <%end%>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="<%= edit_user_registration_path %>" class="btn btn-success">Editar Perfil</a>
-                </div>
-                <div class="pull-right">
-                  <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "btn btn-danger header-menu-mobile-btn"%>
-                </div>
-              </li>
-            </ul>
           </li>
-        <% else %>
-        <li class="dropdown messages-menu">
-
-          <a href="<%= new_user_session_path %>">
-          <span class="fa fa-user-circle-o"></span>  INICIAR SESIÓN
-          </a>
-        </li>
-        <li class="dropdown notifications-menu">
-          <a href="<%=new_user_registration_path%>">
-            <span class="fa fa-registered"></span>REGISTRARME
-          </a>
-        </li>
-<% end %>
-          <!-- Control Sidebar Toggle Button -->
-        </ul>
+          <%end%>
+        <%end%>
+          <% if user_signed_in? %>
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <% if current_user.perfil.thumb.present?%>
+              <%= image_tag current_user.perfil.thumb,  class: "user-image", alt: "User Image"%>
+            <%else%>
+            <%=image_tag 'user2-160x160.jpg', class: "user-image", alt: "User Image"%>
+            <%end%>
+                <% if user_signed_in? %>
+                <span class="hidden-xs"><%= current_user.nombre.upcase%></span>
+              </a>
+              <%end%>
+              <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                  <% if current_user.perfil.thumb.present?%>
+                    <%= image_tag current_user.perfil.thumb,  class: "img-circle", alt: "User Image"%>
+                  <%else%>
+                    <%=image_tag 'user2-160x160.jpg', class: "img-circle", alt: "img-circle"%>
+                  <%end%>
+                  <% if user_signed_in? %>
+                  <p>
+                    <%= current_user.nombre.upcase%>
+                    <small>Miembro desde: <%= l current_user.created_at, format: :long%></small>
+                  </p>
+                </li>
+                <%end%>
+                <!-- Menu Body -->
+                <li class="user-body">
+                  <div class="row">
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Followers</a>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Sales</a>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                      <a href="#">Friends</a>
+                    </div>
+                  </div>
+                  <!-- /.row -->
+                </li>
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                  <div class="pull-left">
+                    <a href="<%= edit_user_registration_path %>" class="btn btn-success">Editar Perfil</a>
+                  </div>
+                  <div class="pull-right">
+                    <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "btn btn-danger header-menu-mobile-btn"%>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+          <li class="dropdown messages-menu">
+            <a href="<%= new_user_session_path %>">
+            <span class="fa fa-user-circle-o"></span>  INICIAR SESIÓN
+            </a>
+          </li>
+          <li class="dropdown notifications-menu">
+            <a href="<%=new_user_registration_path%>">
+              <span class="fa fa-registered"></span>REGISTRARME
+            </a>
+          </li>
+  <% end %>
+            <!-- Control Sidebar Toggle Button -->
+          </ul>
+        </div>
+      </nav>
+    </header>
+      <div class="container">
+        <%= custom_bootstrap_flash %>
+        <%=yield%>
       </div>
+  <!-- jQuery 3 -->
+  <%= javascript_include_tag 'dist/js/jquery.min.js'%>
+  <!-- Bootstrap 3.3.7 -->
+  <%= javascript_include_tag 'dist/js/bootstrap.min.js'%>
+  <!-- FastClick -->
+  <%= javascript_include_tag 'dist/js/fastclick.js'%>
+  <!-- AdminLTE App -->
+  <%= javascript_include_tag 'dist/js/adminlte.min.js'%>
+  <!-- Sparkline -->
+  <%= javascript_include_tag 'dist/js/jquery.sparkline.min.js'%>
+  <!-- jvectormap  -->
+  <%= javascript_include_tag 'dist/plugins/jquery-jvectormap-1.2.2.min.js'%>
+  <%= javascript_include_tag 'dist/plugins/jquery-jvectormap-world-mill-en.js'%>
+  <!-- SlimScroll -->
+  <%= javascript_include_tag 'dist/js/jquery.slimscroll.min.js'%>
+  <!-- ChartJS -->
+  <%= javascript_include_tag 'dist/js/Chart.js'%>
+  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+  <%= javascript_include_tag 'dist/js/dashboard2.js'%>
+  <!-- AdminLTE for demo purposes -->
+  <%= javascript_include_tag 'dist/js/demo.js'%>
 
-    </nav>
-  </header>
-    <div class="container">
-      <%= custom_bootstrap_flash %>
-      <%=yield%>
+  <!--<footer class="full-width footer">
+    <div class="full-width">
+      <b>Version</b> 2.4.18
     </div>
+    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+    reserved.
+  </footer>-->
 
-
-<!-- jQuery 3 -->
-<%= javascript_include_tag 'dist/js/jquery.min.js'%>
-<!-- Bootstrap 3.3.7 -->
-<%= javascript_include_tag 'dist/js/bootstrap.min.js'%>
-<!-- FastClick -->
-<%= javascript_include_tag 'dist/js/fastclick.js'%>
-<!-- AdminLTE App -->
-<%= javascript_include_tag 'dist/js/adminlte.min.js'%>
-<!-- Sparkline -->
-<%= javascript_include_tag 'dist/js/jquery.sparkline.min.js'%>
-<!-- jvectormap  -->
-<%= javascript_include_tag 'dist/plugins/jquery-jvectormap-1.2.2.min.js'%>
-<%= javascript_include_tag 'dist/plugins/jquery-jvectormap-world-mill-en.js'%>
-<!-- SlimScroll -->
-<%= javascript_include_tag 'dist/js/jquery.slimscroll.min.js'%>
-<!-- ChartJS -->
-<%= javascript_include_tag 'dist/js/Chart.js'%>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<%= javascript_include_tag 'dist/js/dashboard2.js'%>
-<!-- AdminLTE for demo purposes -->
-<%= javascript_include_tag 'dist/js/demo.js'%>
-
-<!--<footer class="full-width footer">
-  <div class="full-width">
-    <b>Version</b> 2.4.18
-  </div>
-  <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-  reserved.
-</footer>-->
-
-</body>
-
+  </body>
 </html>

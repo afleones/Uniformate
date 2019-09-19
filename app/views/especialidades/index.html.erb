@@ -1,18 +1,18 @@
+<% breadcrumb :especialidades %>
 <div class="table-responsive">
-  <% breadcrumb :especialidades %>
   <h1 class="text-center">Especialidades</h1>
-      <table class="table table-striped">
+    <table class="table table-striped">
+      <tr>
+        <th class="active">Id</th>
+        <th class="active">Nombre</th>
+      </tr>
+      <% @especialidades.each do |especialidad| %>
         <tr>
-          <th class="active">Id</th>
-          <th class="active">Nombre</th>
+          <td><%= link_to especialidad.id , especialidad%></td>
+          <td><%= link_to especialidad.nombre, especialidad %></td>
         </tr>
-            <% @especialidades.each do |especialidad| %>
-            <tr>
-            <td><%= link_to especialidad.id , especialidad%></td>
-            <td><%= link_to especialidad.nombre, especialidad %></td>
-            </tr>
-        <%end%>
-      </table>
+      <%end%>
+    </table>
 </div>
 <% if current_user.has_role? :admin%>
   <%= link_to "Crear Especialidad", new_especialidad_path(@especialidad) , class:"btn btn-success btn-lg" %>
