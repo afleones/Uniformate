@@ -1,33 +1,31 @@
-<div class="col-md-4">
-  <% breadcrumb :articulo_show, @articulo %>
-    <h1 class="text-center"><%= @articulo.nombre %></h1>
-        <div class="form-group text-center be-red white">
-          <form>
-            <div class="form-group row">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Codigo:</label><%= @articulo.codigo %><br>
-            </div>
-            <div class="form-group row">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Nombre:</label> <%= @articulo.nombre %> <br>
-            </div>
-            <div class="form-group row">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad:</label> <%= @articulo.cantidad %><br>
-            </div>
-            <div class="form-group row">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Valor:</label><%= @articulo.valor %>
-            </div>
-            <div class="form-group row">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Categoria:</label> <%= @articulo.categoria.nombre %>
-            </div>
-            <div class="form-group row">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Estado:</label> <%= @articulo.estado ? "Activo" : "Inactivo"%>
-            </div>
-            <%= link_to "Editar", edit_articulo_path(@articulo) , class:"btn btn-outline-danger btn-lg btn-block"%><br><br>
-          </form>
-      </div>
-</div>
-      <div class="col-md-4">
-      </div>
-      <div class="col-md-4">
-      </div>
-<%= link_to "volver", articulos_path(@articulo) , class:"btn btn-danger" %>
-<%= link_to "Ir A Categorias", categorias_path(@categoria) , class:"btn btn-danger"%>
+<% breadcrumb :articulo_show, @articulo %>
+  <div class="col-md-4">
+      <h1 class="text-center"><%= @articulo.nombre %></h1>
+          <div class="form-group text-center be-red white">
+            <form>
+              <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Codigo:</label><%= @articulo.codigo %><br>
+              </div>
+              <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Nombre:</label> <%= @articulo.nombre %> <br>
+              </div>
+              <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad:</label> <%= @articulo.cantidad %><br>
+              </div>
+              <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Valor:</label><%= @articulo.valor %>
+              </div>
+              <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Categoria:</label> <%= @articulo.categoria.nombre %>
+              </div>
+              <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Estado:</label> <%= @articulo.estado ? "Activo" : "Inactivo"%>
+              </div>
+              <%= link_to "Editar", edit_articulo_path(@articulo) , class:"btn btn-outline-primary"%>
+            </form>
+        </div>
+  </div>
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+  </div>

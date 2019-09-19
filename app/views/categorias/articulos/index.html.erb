@@ -1,17 +1,17 @@
-<h1 class="text-center">Articulos De La Categorias <%= @categoria.nombre %> </h1>
 <% breadcrumb :categoria_articulos, @categoria, @articulos %>
-<table class="table table-striped">
-  <tr>
-    <th class="active">Id</th>
-    <th class="active">Nombre</th>
-  </tr>
-  <% @articulos.each do |categorias| %>
-    <tr>
-      <td><%= link_to categorias.id, articulo_path(categorias.id)%></td>
-      <td class=""><%= link_to categorias.nombre, articulo_path(categorias.id)%></td>
-    </tr>
-  <%end%>
-</table>
+  <h1 class="text-center">Articulos De La Categorias <%= @categoria.nombre %> </h1>
+    <table class="table table-striped">
+      <tr>
+        <th class="active">Id</th>
+        <th class="active">Nombre</th>
+      </tr>
+      <% @articulos.each do |categorias| %>
+        <tr>
+          <td><%= link_to categorias.id, articulo_path(categorias.id)%></td>
+          <td class=""><%= link_to categorias.nombre, articulo_path(categorias.id)%></td>
+        </tr>
+      <%end%>
+    </table>
 <% if current_user.has_role? :admin%>
-  <%= link_to "Editar Categoria", edit_categoria_path(@categoria) , class:"btn btn-success btn-lg" %>
+      <%= link_to "Editar Categoria", edit_categoria_path(@categoria) , class:"btn btn-success btn-lg" %>
 <%end%>

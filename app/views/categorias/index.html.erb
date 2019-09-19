@@ -1,21 +1,21 @@
 <% if signed_in? %>
-<div class="table-responsive">
   <% breadcrumb :categorias %>
-  <h1 class="text-center">Categorias</h1>
-    <table class="table table-striped">
-      <tr>
-        <th class="active">Id</th>
-        <th class="active">Nombre</th>
-      </tr>
-      <% @categorias.each do |categorias| %>
-        <tr>
-          <td><%= link_to categorias.id, categoria_path(categorias.id)  %></td>
-          <td><%= link_to categorias.nombre, categoria_articulos_path(categorias.id)%></td>
-        </tr>
-      <%end%>
-    </table>
-</div>
-      <% if current_user.has_role? :admin%>
-        <%= link_to "Registrar Categoria", new_categoria_path(@categoria) , class:"btn btn-success btn-lg" %>
-      <%end%>
+    <div class="table-responsive">
+      <h1 class="text-center">Categorias</h1>
+        <table class="table table-striped">
+          <tr>
+            <th class="active">Id</th>
+            <th class="active">Nombre</th>
+          </tr>
+          <% @categorias.each do |categorias| %>
+            <tr>
+              <td><%= link_to categorias.id, categoria_path(categorias.id)  %></td>
+              <td><%= link_to categorias.nombre, categoria_articulos_path(categorias.id)%></td>
+            </tr>
+          <%end%>
+        </table>
+    </div>
+    <% if current_user.has_role? :admin%>
+      <%= link_to "Registrar Categoria", new_categoria_path(@categoria) , class:"btn btn-success btn-lg" %>
+    <%end%>
 <%end%>

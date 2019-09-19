@@ -1,20 +1,20 @@
-<div class="table-responsive">
-  <% breadcrumb :tallas %>
-  <h1 class="text-center">Tallas</h1>
+<% breadcrumb :tallas %>
+  <div class="table-responsive">
+    <h1 class="text-center">Tallas</h1>
       <table class="table table-striped">
-        <tr>
-          <th class="active">Id</th>
-          <th class="active">Nombre</th>
-        </tr>
-            <% @tallas.each do |talla| %>
-            <tr>
+          <tr>
+            <th class="active">Id</th>
+            <th class="active">Nombre</th>
+          </tr>
+          <% @tallas.each do |talla| %>
+          <tr>
             <td><%= link_to talla.id , talla%></td>
             <td><%= link_to talla.nombre, talla %></td>
-            </tr>
-        <%end%>
+          </tr>
+          <%end%>
       </table>
-</div>
-<% if current_user.has_role? :admin%>
-  <%= link_to "Crear talla", new_talla_path(@talla) , class:"btn btn-success btn-lg" %>
-<%else%>
-<%end%>
+  </div>
+  <% if current_user.has_role? :admin%>
+    <%= link_to "Crear talla", new_talla_path(@talla) , class:"btn btn-success btn-lg" %>
+  <%else%>
+  <%end%>

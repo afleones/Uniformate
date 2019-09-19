@@ -1,5 +1,5 @@
+<% breadcrumb :articulo_edit, @articulo %>
 <div class="container">
   <h1 class="text-center">Editar<%=@articulo.nombre %></h1><br><br>
   <%= render "form" %>
 </div>
-<%= link_to "Atras", articulo_path(@articulo) , class:"btn btn-danger" %>
