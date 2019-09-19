@@ -47,7 +47,6 @@ class ArticulosController < ApplicationController
       render :edit
     end
   end
-
   #DELETE /articulos/:id
   def destroy
     @articulo = Articulo.find(params[:id]).destroy
