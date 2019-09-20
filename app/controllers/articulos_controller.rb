@@ -56,7 +56,7 @@ class ArticulosController < ApplicationController
 
   private
   def articulo_params
-    params.require(:articulo).permit(:nombre,:cantidad,:valor,:codigo,:categoria_id,:imagen)
+    params.require(:articulo).permit(:nombre,:estado , :cantidad,:valor,:codigo,:categoria_id,:imagen)
   end
 
   def authenticate_role_user

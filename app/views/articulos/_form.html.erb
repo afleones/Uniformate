@@ -7,47 +7,43 @@
             <%= message %>
             </div>
           <%end%>
-          <div class="row">
-            <div class="col-md-5">
-              <label>Nombre</label>
-              <%= f.text_field :nombre, required: true,autofocus: true, class:"form-control", placeholder: "Nombre del Articulo"%>
-            </div>
-            <div class="col-md-5">
-              <label>Codigo</label>
-              <%= f.number_field :codigo, required: true,autofocus: true, min:1,class: 'form-control', placeholder: "Codigo del Articulo"%>
-            </div>
-          </div>
-            <br>
-          <div class="row">
-            <div class="col-md-5">
-              <label>Cantidad</label>
-                  <%= f.number_field :cantidad,required: true, autofocus: true, min:1, class:"form-control", placeholder: "Escribe La Cantidad De articulo"%>
-            </div>
-            <div class="col-md-5">
-              <label>Valor (Precio $)</label>
-              <%= f.number_field :valor,required: true,autofocus: true, min:1 , class: "form-control", placeholder: "Escribe el valor Del articulo", hint: "Escriba el valor del Articulo sin puntos ni comas."%>
-            </div>
-          </div>
-            <br>
             <div class="row">
               <div class="col-md-5">
-                <%= f.association :categoria, label_method: :nombre, value_method: :id, min:"1"%>
-            </div>
-            <div class="col-md-5">
-              <%= f.input :imagen, input_html: {class: "form-control input-lg"}%>
-            </div>
+                <label>Nombre</label>
+                <%= f.text_field :nombre, required: true,autofocus: true, class:"form-control", placeholder: "Nombre del Articulo"%>
               </div>
-                <br>
+              <div class="col-md-5">
+                <label>Codigo</label>
+                <%= f.number_field :codigo, required: true,autofocus: true, min:1,class: 'form-control', placeholder: "Codigo del Articulo"%>
+              </div>
+            </div><br>
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-5">
+                <label>Cantidad</label>
+                    <%= f.number_field :cantidad,required: true, autofocus: true, min:1, class:"form-control", placeholder: "Escribe La Cantidad De articulo"%>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-5">
+                <label>Valor (Precio $)</label>
+                <%= f.number_field :valor,required: true,autofocus: true, min:1 , class: "form-control", placeholder: "Escribe el valor Del articulo", hint: "Escriba el valor del Articulo sin puntos ni comas."%>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-md-5">
+                  <%= f.association :categoria, label_method: :nombre, value_method: :id, min:"1"%>
+              </div>
+              <div class="col-md-5">
+                <%= f.input :imagen, input_html: {class: "form-control input-lg"}%>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                 <%= f.input :estado, as: :radio_buttons, collection: [['Activo',true],['Inactivo', false]]%>
+              </div>
+              <div class="from-group">
                 <%= f.submit "Guardar Cambios", class:"btn btn-success" %>
               </div>
-              <div class="col-md-4">
-              </div>
             </div>
-        </div>
-  </div>
         <%end%>
+      </div>
+   </div>
 </div>
