@@ -7,6 +7,9 @@ class CategoriasController < ApplicationController
   #GET /categorias
   def index
     @categorias = Categoria.all
+    if params[:q].present?
+      @categorias = @categorias.where("nombre ilike :q", q: "%#{params[:q]}%")
+    end
   end
   #GET /categorias/:id
   def show

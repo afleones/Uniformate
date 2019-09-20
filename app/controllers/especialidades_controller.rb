@@ -5,6 +5,9 @@ class EspecialidadesController < ApplicationController
   #GET /especialidades
   def index
     @especialidades = Especialidad.all
+    if params[:q].present?
+      @especialidades = @especialidades.where("nombre ilike :q", q: "%#{params[:q]}%")
+    end
   end
   #GET /especialidad/:id
   def show

@@ -4,6 +4,14 @@
       <% if current_user.has_role? :admin %>
             <div class="table-responsive">
               <h1 class="text-center">Categorias</h1>
+              <%= form_tag(categorias_path, class:"form-inline" , method: :get) do %>
+                <div class="form-group">
+                  <input type="text" name="q" class="form-control" placeholder="Buscar..." type="text" value="<%= params[:q] %>">
+                  <span class="form-group">
+                      <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                  </span>
+                </div>
+              <%end%><br>
                 <table class="table table-striped">
                   <tr>
                     <th class="active">Id</th>
@@ -11,7 +19,7 @@
                   </tr>
                   <% @categorias.each do |categoria| %>
                     <tr>
-                      <td><%= link_to categoria.id, categoria_path(categoria.id)  %></td>
+                      <td><%= categoria.id %></td>
                       <td><%= link_to categoria.nombre, categoria_articulos_path(categoria.id)%></td>
                   <%end%>
                     </tr>

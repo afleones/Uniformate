@@ -3,7 +3,15 @@
     <%if current_user.has_role? :admin %>
       <div class="table-responsive">
         <% breadcrumb :articulos %>
-        <h1 class="text-center">Articulos</h1>
+          <h1 class="text-center">Articulos</h1>
+        <%= form_tag(articulos_path, class:"form-inline" , method: :get) do %>
+          <div class="form-group">
+            <input type="text" name="q" class="form-control" placeholder="Buscar..." type="text" value="<%= params[:q] %>">
+            <span class="form-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+          </div>
+        <%end%><br>
             <table class="table table-striped">
               <tr>
                 <th class="active">Id</th>
@@ -15,11 +23,11 @@
               </tr>
               <% @articulos.each do |articulo| %>
                 <tr>
-                  <td><%= link_to articulo.id , articulo_path(articulo.id)%></td>
-                  <td><%= link_to articulo.codigo , articulo_path(articulo.id)%></td>
-                  <td><%= link_to articulo.nombre , articulo_path(articulo.id)%></td>
-                  <td><%= link_to articulo.cantidad , articulo_path(articulo.id)%></td>
-                  <td><%= link_to articulo.valor , articulo_path(articulo.id)%></td>
+                  <td><%=  articulo.id%></td>
+                  <td><%= link_to articulo.codigo , articulo_path(articulo.id) %></td>
+                  <td><%=  articulo.nombre %></td>
+                  <td><%=  articulo.cantidad %></td>
+                  <td><%=  articulo.valor %></td>
                   <td><%= articulo.estado ? "Activo" : "Inactivo" %></td>
                 </tr>
               <%end%>
