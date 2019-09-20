@@ -39,7 +39,7 @@
               <% end %>
               <div class="row">
                 <div class="col-md-6">
-                  <%= f.association :tipo_documento, label_method: :nombre, value_method: :id , input_html: {class: "form-control" }%>
+                  <%= f.association :tipo_documento, prompt: "Selecione" , label_method: :nombre, value_method: :id , input_html: {class: "form-control" }%>
                 </div>
                 <div class="col-md-6">
                   <%= f.input :documento, required: true, autofocus: true, input_html: {class: "form-control", min:"1", disabled: true} %>
