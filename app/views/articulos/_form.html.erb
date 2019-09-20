@@ -36,9 +36,11 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-2">
-                 <%= f.input :estado, as: :radio_buttons, collection: [['Activo',true],['Inactivo', false]]%>
+              <div class="col-md-5">
+                <%= mostrar_nose(f) %>
               </div>
+            </div>
+            <div class="row">
               <div class="from-group">
                 <%= f.submit "Guardar Cambios", class:"btn btn-success" %>
               </div>

@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20190919223344) do
     t.integer "valor"
     t.bigint "categoria_id"
     t.string "imagen"
-    t.boolean "estado"
+    t.boolean "estado", default: true
     t.index ["categoria_id"], name: "index_articulos_on_categoria_id"
   end
 
