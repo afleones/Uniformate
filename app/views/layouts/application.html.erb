@@ -145,7 +145,17 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i>Buscar Articulo</a></li>
+                <%= form_tag(articulos_path, method: :get) do %>
+                  <% if params[:q].present? %>
+                    <%= t(:articulos_disponibles_html, count: @articulos.size, valor: params[:q], articulos: @articulos.size) %>
+                  <% end %>
+                  <div class="input-group">
+                    <input type="text" name="q" class="form-control ds-input" placeholder="Buscar..." type="text" value="<%= params[:q] %>"></input>
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                    </span>
+                  </div>
+                <%end%>
                 <li><a href="<%=articulos_path%>"><i class="fa fa-circle-o"></i>Lista de Articulos</a></li>
                 <li class="active"><a href="<%=new_articulo_path%>"><i class="fa fa-circle-o"></i>Crear Articulo</a></li>
               </ul>
