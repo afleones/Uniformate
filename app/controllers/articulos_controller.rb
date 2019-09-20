@@ -7,7 +7,13 @@ class ArticulosController < ApplicationController
 
   #GET /articulos
   def index
+    start = Time.now
     @articulos = Articulo.all
+    if params[:q].present?
+      @articulos = @articulos.where("nombre ilike :q", q: "%#{params[:q]}%")
+    end
+    finish = Time.now
+    @diff = finish - start
   end
   #GET /articlos/:id
   def show
