@@ -55,10 +55,10 @@
                       <!-- Menu Footer-->
                       <li class="user-footer">
                         <div class="pull-left">
-                          <a href="<%= edit_user_registration_path %>" class="btn btn-success">mi perfil</a>
+                          <a href="<%= edit_user_registration_path %>" class="btn btn-success">MI PERFIL</a>
                         </div>
                         <div class="pull-right">
-                          <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "btn btn-danger header-menu-mobile-btn"%>
+                          <%= link_to "SALIR", destroy_user_session_path, method: :delete, class: "btn btn-danger header-menu-mobile-btn"%>
                         </div>
                       </li>
                     </ul>
@@ -93,6 +93,7 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MENU DE NAVEGACION</li>
+      <% if current_user.has_role? :admin%>
       <li class="active treeview menu-open">
         <a href="#">
           <i class="fa fa-dashboard"></i> <span>Articulos</span>
@@ -101,12 +102,11 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="<%=articulos_path%>"><i class="fa fa-circle-o"></i>Lista de Articulos</a></li>
-          <% if current_user.has_role? :admin%>
+            <li><a href="<%=articulos_path%>"><i class="fa fa-circle-o"></i>Lista de Articulos</a></li>
             <li class="active"><a href="<%=new_articulo_path%>"><i class="fa fa-circle-o"></i>Crear Articulo</a></li>
-          <%end%>
         </ul>
       </li>
+      <%end%>
       <li class="active treeview menu-open">
         <a href="#">
           <i class="fa fa-dashboard"></i> <span>Categorias</span>
@@ -121,6 +121,7 @@
           <%end%>
         </ul>
       </li>
+      <% if current_user.has_role? :admin%>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-dashboard"></i>
@@ -130,27 +131,39 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="<%=especialidades_path%>"><i class="fa fa-circle-o"></i> Listado De Especialidades</a></li>
-          <% if current_user.has_role? :admin%>
+            <li><a href="<%=especialidades_path%>"><i class="fa fa-circle-o"></i> Listado De Especialidades</a></li>
             <li><a href="<%=new_especialidad_path%>"><i class="fa fa-circle-o"></i> Crear Especialidad</a></li>
-          <%end%>
         </ul>
       </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-dashboard"></i>
-          <span>Tallas</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="<%=tallas_path%>"><i class="fa fa-circle-o"></i> Listado De Tallas</a></li>
-          <% if current_user.has_role? :admin%>
-              <li><a href="<%=new_talla_path%>"><i class="fa fa-circle-o"></i> Crear Talla</a></li>
-          <%end%>
-        </ul>
-      </li>
+      <%end%>
+      <% if current_user.has_role? :admin%>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i>
+            <span>Tallas</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<%=tallas_path%>"><i class="fa fa-circle-o"></i> Listado De Tallas</a></li>
+            <li><a href="<%=new_talla_path%>"><i class="fa fa-circle-o"></i> Crear Talla</a></li>
+          </ul>
+        </li>
+      <%end%>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i>
+            <span>Pedidos</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<%=pedidos_path%>"><i class="fa fa-circle-o"></i>Pedidos</a></li>
+            <li><a href="<%=new_pedido_path%>"><i class="fa fa-circle-o"></i> Nuevo Pedido</a></li>
+          </ul>
+        </li>
     </ul>
   </section>
   <!-- /.sidebar -->

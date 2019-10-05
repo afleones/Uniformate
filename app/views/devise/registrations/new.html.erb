@@ -29,22 +29,14 @@
                      <%= f.input :documento,required: true,autofocus: true,placeholder: "Escriba su numero de documento",input_html: { autocomplete: "email", class: "form-control"}%>
                  </div>
                </div>
-
               <div class="row">
                 <div class="col-md-6">
-                    <%= f.input :password,required: true,label: "Contraseña",
-                    placeholder: "Minimo seis (6) Digitos",
-                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                    input_html: { autocomplete: "new-password", class: "form-control" } %>
+                    <%= f.input :password,required: true,label: "Contraseña",placeholder: "Minimo seis (6) Digitos",hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),input_html: { autocomplete: "new-password", class: "form-control" } %>
                 </div>
                 <div class="col-md-6">
-                    <%= f.input :password_confirmation,required: true,
-                    label: "Confirmar Contraseña",
-                    placeholder: "Confirme su Contraseña",
-                    input_html: { autocomplete: "new-password", class: "form-control" } %>
+                    <%= f.input :password_confirmation,required: true,label: "Confirmar Contraseña",placeholder: "Confirme su Contraseña",input_html: { autocomplete: "new-password", class: "form-control" } %>
                 </div>
               </div>
-
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.input :perfil, label: "Foto de Perfil (Opcional)", class: "form-control"%>
@@ -56,16 +48,13 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="row">
                   <div class="col-md-3">
-
               </div>
                     <div class="col-md-6">
                       <%= f.button :submit, "Registrarme", class:"btn btn-primary btn-block btn-flat"%>
                 </div>
                 <div class="col-md-3">
-
             </div>
          <%end%>
               <div class="col-md-4"></div>

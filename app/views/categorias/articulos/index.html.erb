@@ -1,17 +1,62 @@
-<h1 class="text-center">Articulos De La Categorias <%= @categoria.nombre %> </h1>
 <% breadcrumb :categoria_articulos, @categoria, @articulos %>
-<table class="table table-striped">
-  <tr>
-    <th class="active">Id</th>
-    <th class="active">Nombre</th>
-  </tr>
-  <% @articulos.each do |categorias| %>
-    <tr>
-      <td><%= link_to categorias.id, articulo_path(categorias.id)%></td>
-      <td class=""><%= link_to categorias.nombre, articulo_path(categorias.id)%></td>
-    </tr>
+<h1 class="text-center">Articulos De La Categorias <%= @categoria.nombre %> </h1>
+<div class="container">
+  <% if signed_in? %>
+    <%if current_user.has_role? :admin %>
+      <div class="table-responsive">
+        <%= form_tag(articulos_path, class:"form-inline" , method: :get) do %>
+          <div class="form-group">
+            <input type="text" name="q" class="form-control" placeholder="Buscar..." type="text" value="<%= params[:q] %>">
+            <span class="form-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+          </div>
+        <%end%><br>
+            <table class="table table-striped">
+              <tr>
+                <th class="active">Id</th>
+                <th class="active">Codigo</th>
+                <th class="active">Nombre</th>
+                <th class="active">Cantidad</th>
+                <th class="active">Precio</th>
+                <th class="active">Estado</th>
+              </tr>
+              <% @articulos.each do |articulo| %>
+                <tr>
+                  <td><%=  articulo.id%></td>
+                  <td><%= link_to articulo.codigo , articulo_path(articulo.id) %></td>
+                  <td><%=  articulo.nombre %></td>
+                  <td><%=  articulo.cantidad %></td>
+                  <td><%=  articulo.valor %></td>
+                  <td><%= articulo.estado ? "Activo" : "Inactivo" %></td>
+                </tr>
+              <%end%>
+            </table>
+            <% if current_user.has_role? :admin%>
+              <%= link_to "Editar Categoria", edit_categoria_path(@categoria) , class:"btn btn-success btn-lg" %>
+            <%end%>
+      </div>
+        <%else%>
+          <% breadcrumb :categoria_articulos, @categoria, @articulos %>
+              <div class="col-md-3">
+                <% @articulos.each do |articulo| %>
+                  <%= link_to articulo_path(articulo.id) do %>
+                    <div class="full-width post">
+                        <figure class="full-width post-img">
+                            <!-- Tamaño de la imagen 248x186 pixeles-->
+                            <% if articulo.imagen.present? %>
+                                <%= image_tag articulo.imagen.thumb.url %>
+                            <%else%>
+                                <%= image_tag 'default-150x150'%>
+                            <%end%>
+                            <div class="full-width post-info">
+                               <p class="full-width post-info-price nom_gru"><label>Nombre:</label><%=  articulo.nombre%></p>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+          <%end%>
+        <%end%>
+    <%end%>
   <%end%>
-</table>
-<% if current_user.has_role? :admin%>
-  <%= link_to "Editar Categoria", edit_categoria_path(@categoria) , class:"btn btn-success btn-lg" %>
-<%end%>
+</div>

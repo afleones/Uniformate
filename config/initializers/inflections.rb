@@ -2,6 +2,8 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'categoria', 'categorias'
   inflect.irregular 'especialidad', 'especialidades'
   inflect.irregular 'tipodocumento', 'tipodocumentos'
+  inflect.irregular 'pedido', 'pedidos'
+  inflect.irregular 'detallepedido', 'detallepedidos'
 end
 
 # Be sure to restart your server when you modify this file.

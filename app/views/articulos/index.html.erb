@@ -36,31 +36,23 @@
         <%else%>
           <% breadcrumb :articulos %>
           <h1 class="text-center">Articulos en Venta</h1>
-              <div class="col-md-10">
+              <div class="col-md-3">
                 <% @articulos.each do |articulo| %>
-                <%= link_to articulo_path(articulo) do %>
-                <div class="full-width post">
-                    <figure class="full-width post-img">
-                      <!-- Tamaño de la imagen 248x186 pixeles-->
-                      <% if articulo.imagen.present? %>
-                          <%= image_tag articulo.imagen.thumb.url%>
-                      <%else%>
-                          <%= image_tag 'default-150x150'%>
-                      <%end%>
-                    </figure>
-                    <div class="card-body">
-                      <div class="row">
-                          <p class="text-center"><%=articulo.nombre%></p>
-                      </div>
-                      <div class="row">
-                         <p class="text-center"><label>precio: $</label><%=articulo.valor%></p>
-                      </div>
-                       <div class="row">
-                         <p class="text-center"><label>Cantidad:</label> <%=articulo.cantidad%></p>
-                       </div>
+                  <%= link_to articulo_path(articulo.id) do %>
+                    <div class="full-width post">
+                        <figure class="full-width post-img">
+                            <!-- Tamaño de la imagen 248x186 pixeles-->
+                            <% if articulo.imagen.present? %>
+                                <%= image_tag articulo.imagen.thumb.url %>
+                            <%else%>
+                                <%= image_tag 'default-150x150'%>
+                            <%end%>
+                            <div class="full-width post-info">
+                               <p class="full-width post-info-price nom_gru"><label>Nombre:</label><%=  articulo.nombre%></p>
+                            </div>                            
+                        </figure>
                     </div>
                 </div>
-              </div>
           <%end%>
         <%end%>
     <%end%>
