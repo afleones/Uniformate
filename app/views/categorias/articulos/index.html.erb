@@ -32,9 +32,6 @@
                 </tr>
               <%end%>
             </table>
-            <% if current_user.has_role? :admin%>
-              <%= link_to "Editar Categoria", edit_categoria_path(@categoria) , class:"btn btn-success btn-lg" %>
-            <%end%>
       </div>
         <%else%>
           <% breadcrumb :categoria_articulos, @categoria, @articulos %>
@@ -51,6 +48,7 @@
                             <%end%>
                             <div class="full-width post-info">
                                <p class="full-width post-info-price nom_gru"><label>Nombre:</label><%=  articulo.nombre%></p>
+                               <p class="full-width post-info-price nom_gru"><label>Precio:</label><%=  articulo.valor%></p>
                             </div>
                         </figure>
                     </div>
