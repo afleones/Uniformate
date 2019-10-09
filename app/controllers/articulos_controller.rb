@@ -1,10 +1,8 @@
 class ArticulosController < ApplicationController
-
   before_action :authenticate_user!, except: [:index]
-  before_action :authenticate_role_user, except: [:index]
+  before_action :authenticate_role_user, except: [:index, :show]
 
   respond_to :html
-
   #GET /articulos
   def index
     @articulos = Articulo.all
