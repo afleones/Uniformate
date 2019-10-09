@@ -14,12 +14,12 @@
         <%end%><br>
             <table class="table table-striped">
               <tr>
-                <th class="active">Id</th>
-                <th class="active">Codigo</th>
-                <th class="active">Nombre</th>
-                <th class="active">Cantidad</th>
-                <th class="active">Precio</th>
-                <th class="active">Estado</th>
+                <th class="bg-primary">Id</th>
+                <th class="bg-primary">Codigo</th>
+                <th class="bg-primary">Nombre</th>
+                <th class="bg-primary">Cantidad</th>
+                <th class="bg-primary">Precio</th>
+                <th class="bg-primary">Estado</th>
               </tr>
               <% @articulos.each do |articulo| %>
                 <tr>
@@ -36,9 +36,9 @@
         <%else%>
           <% breadcrumb :articulos %>
           <h1 class="text-center">Articulos en Venta</h1>
-              <div class="col-md-10">
+              <div class="col-md-3">
                 <% @articulos.each do |articulo| %>
-                <%= link_to articulo_path(articulo) do %>
+                <%= link_to articulo_path(articulo.id) do %>
                 <div class="full-width post">
                     <figure class="full-width post-img">
                       <!-- Tamaño de la imagen 248x186 pixeles-->
@@ -49,15 +49,8 @@
                       <%end%>
                     </figure>
                     <div class="card-body">
-                      <div class="row">
-                          <p class="text-center"><%=articulo.nombre%></p>
-                      </div>
-                      <div class="row">
-                         <p class="text-center"><label>precio: $</label><%=articulo.valor%></p>
-                      </div>
-                       <div class="row">
-                         <p class="text-center"><label>Cantidad:</label> <%=articulo.cantidad%></p>
-                       </div>
+                        <p class="text-center"><%=articulo.nombre%></p>
+                        <p class="text-center"><label>precio: $</label><%=articulo.valor%></p>
                     </div>
                 </div>
               </div>
