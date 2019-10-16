@@ -9,7 +9,7 @@
       <% @tallas.each do |talla| %>
         <tr>
           <td><%= link_to talla.id , talla%></td>
-          <td><%= link_to talla.nombre, talla %></td>
+          <td><%= talla.nombre %></td>
         </tr>
       <%end%>
     </table>
