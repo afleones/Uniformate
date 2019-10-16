@@ -23,4 +23,5 @@ public/uploads
 *.cache
 *.log
 *.cache
+*database.yml
 *.yml
