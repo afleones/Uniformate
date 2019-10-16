@@ -1,16 +1,23 @@
-<% breadcrumb :talla_show, @talla %>
-<div class="container">
-  <h1 class="text-center"><%= @talla.nombre %></h1>
-    <div class="row">
-      <table class="table table-striped">
-        <tr>
-          <th class="active">Nombre</th>
-          <th class="active">Editar</th>
-        </tr>
-          <tr>
-            <td class="active"><%= @talla.nombre %></td>
-            <td><%= link_to "Editar", edit_talla_path(@talla) , class:"btn btn-warning"%> </td>
-          </tr>
-      </table>
-    </div>
-</div>
+<% if signed_in? %>
+  <div class="col-md-1"></div>
+     <div class="col-md-10">
+       <% breadcrumb :talla_show, @talla %>
+          <h1 class="text-center">Talla <%= @talla.nombre %></h1>
+          <div class="form-group">
+            <form>
+              <div class="row">
+                 <div class="col-md-2">
+                    Nombre
+                    <%= @talla.nombre %>
+                 </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-2">
+              <%if current_user.has_role? :admin %>
+                <br><br><%= link_to "Editar Articulo", edit_talla_path(@talla) , class:"btn btn-warning"%><br><br>
+              <%end%>
+           </div>
+      </div>
+  <div class="col-md-1"></div>
+<%end%>

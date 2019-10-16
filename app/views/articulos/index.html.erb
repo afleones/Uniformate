@@ -33,7 +33,7 @@
               <%end%>
             </table>
       </div>
-        <%else%>
+    <%else%>
           <% breadcrumb :articulos %>
           <h1 class="text-center">Articulos en Venta</h1>
               <div class="col-md-3">
@@ -54,7 +54,8 @@
                         </figure>
                     </div>
                 </div>
-                <%= link_to articulo_path(articulo) do %>
+              <%end%>
+              <%= link_to articulo_path(articulo) do %>
                 <div class="full-width post">
                     <figure class="full-width post-img">
                       <!-- Tamaño de la imagen 248x186 pixeles-->
@@ -76,8 +77,7 @@
                        </div>
                     </div>
                 </div>
-              </div>
-          <%end%>
+            <%end%>
         <%end%>
     <%end%>
   <%end%>
