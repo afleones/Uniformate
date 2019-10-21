@@ -1,54 +1,57 @@
 <div class="container">
-  <% if signed_in? %>
-    <% breadcrumb :categorias %>
-      <% if current_user.has_role? :admin %>
-            <div class="table-responsive">
-              <h1 class="text-center">Categorias</h1>
-              <%= form_tag(categorias_path, class:"form-inline" , method: :get) do %>
-                <div class="form-group">
-                  <input type="text" name="q" class="form-control" placeholder="Buscar..." type="text" value="<%= params[:q] %>">
-                  <span class="form-group">
-                      <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                  </span>
-                </div>
-              <%end%><br>
-                <table class="table table-striped">
-                  <tr>
-                    <th class="active">Id</th>
-                    <th class="active">Nombre</th>
-                  </tr>
-                  <% @categorias.each do |categoria| %>
+  <div class="row">
+    <% if signed_in? %>
+      <% breadcrumb :categorias %>
+        <% if current_user.has_role? :admin %>
+              <div class="table-responsive">
+                <h1 class="text-center">Categorias</h1>
+                <%= form_tag(categorias_path, class:"form-inline" , method: :get) do %>
+                  <div class="form-group">
+                    <input type="text" name="q" class="form-control" placeholder="Buscar..." type="text" value="<%= params[:q] %>">
+                    <span class="form-group">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                    </span>
+                  </div>
+                <%end%><br>
+                  <table class="table table-striped">
                     <tr>
-                      <td><%= categoria.id %></td>
-                      <td><%= link_to categoria.nombre, categoria_articulos_path(categoria.id)%></td>
-                  <%end%>
+                      <th class="active">Id</th>
+                      <th class="active">Nombre</th>
                     </tr>
-                </table>
-            </div>
-          <%else%>
-                <% breadcrumb :categorias %>
-                  <h1 class="text-center">Categorias</h1>
-                    <div class="col-md-3">
-                      <% @categorias.each do |categoria| %>
-                         <%= link_to categoria_path(categoria) do %>
-                            <div class="full-width post">
-                              <%= link_to categoria_articulos_path(categoria.id) do %>
-                                <figure class="full-width post-img">
-                                  <!-- Tamaño de la imagen 248x186 pixeles-->
-                                  <% if categoria.foto.present? %>
-                                      <%= link_to  image_tag categoria.foto.thumb.url , categoria_articulos_path(categoria.id)%>
-                                  <%else%>
-                                      <%= image_tag 'default-150x150'%>
-                                  <%end%>
-                                </figure>
-                              <%end%>
-                              <div class="full-width post-info">
-                                 <p class="full-width post-info-price nom_gru"><%= link_to categoria.nombre, categoria_articulos_path(categoria.id)%></p>
+                    <% @categorias.each do |categoria| %>
+                      <tr>
+                        <td><%= categoria.id %></td>
+                        <td><%= link_to categoria.nombre, categoria_articulos_path(categoria.id)%></td>
+                    <%end%>
+                      </tr>
+                  </table>
+              </div>
+            <%else%>
+                  <% breadcrumb :categorias %>
+                    <h1 class="text-center">Categorias</h1>
+
+                        <% @categorias.each do |categoria| %>
+                        <div class="col">
+                           <%= link_to categoria_path(categoria) do %>
+                              <div class="full-width post">
+                                <%= link_to categoria_articulos_path(categoria.id) do %>
+                                  <figure class="full-width post-img">
+                                    <!-- Tamaño de la imagen 248x186 pixeles-->
+                                    <% if categoria.foto.present? %>
+                                        <%= link_to  image_tag categoria.foto.thumb.url , categoria_articulos_path(categoria.id)%>
+                                    <%else%>
+                                        <%= image_tag 'default-150x150'%>
+                                    <%end%>
+                                  </figure>
+                                <%end%>
+                                <div class="full-width post-info">
+                                   <p class="full-width post-info-price nom_gru"><%= link_to categoria.nombre, categoria_articulos_path(categoria.id)%></p>
+                                </div>
                               </div>
-                            </div>
-                    </div>
-                  <%end%>
-            <%end%>
-        <%end%>
-  <%end%>
+                      </div>
+                    <%end%>
+              <%end%>
+          <%end%>
+    <%end%>
+  </div>
 </div>
