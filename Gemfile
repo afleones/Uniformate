@@ -44,3 +44,5 @@ gem "will_paginate"
 gem 'bread', '~> 0.0.13'
 gem 'table_print', '~> 1.5' , '>= 1.5.6'
 gem 'haml-rails'
+gem 'bootstrap-will_paginate', '~> 1.0'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.2'
