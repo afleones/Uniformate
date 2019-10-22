@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="row">
     <% if signed_in? %>
       <%if current_user.has_role? :admin %>
@@ -36,31 +35,29 @@
               </table>
         </div>
       <%else%>
-            <% breadcrumb :articulos %>
-            <h1 class="text-center">Articulos en Venta</h1>
-
-                    <% @articulos.each do |articulo| %>
-                    <div class="col">
-                      <%= link_to articulo_path(articulo.id) do %>
-                        <div class="full-width post">
-                            <figure class="full-width post-img">
-                                <!-- Tamaño de la imagen 248x186 pixeles-->
-                                <% if articulo.imagen.present? %>
-                                    <%= image_tag articulo.imagen.thumb.url %>
-                                <%else%>
-                                    <%= image_tag 'default-150x150'%>
-                                <%end%>
-                                <div class="full-width post-info">
-                                   <p class="full-width post-info-price nom_gru"><label>Nombres:</label><%=  articulo.nombre%></p>
-                                   <p class="full-width post-info-price nom_gru"><label>Precio:</label><%=  articulo.valor%></p>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-                <%end%>
+         <% breadcrumb :articulos %>
+          <h1 class="text-center">Articulos en Venta</h1>
+          <% @articulos.each do |articulo| %>
+            <div class="col">
+              <%= link_to articulo_path(articulo.id) do %>
+                 <div class="full-width post">
+                    <figure class="full-width post-img">
+                    <!-- Tamaño de la imagen 248x186 pixeles-->
+                       <% if articulo.imagen.present? %>
+                         <%= image_tag articulo.imagen.thumb.url %>
+                       <%else%>
+                         <%= image_tag 'default-150x150'%>
+                       <%end%>
+                       <div class="full-width post-info">
+                         <p class="full-width post-info-price nom_gru"><label>Nombres:</label><%=  articulo.nombre%></p>
+                         <p class="full-width post-info-price nom_gru"><label>Precio:</label><%=  articulo.valor%></p>
+                       </div>
+                     </figure>
+                  </div>
+               <%end%>
+            </div>
           <%end%>
       <%end%>
     <%end%>
   </div>
-
 </div>
