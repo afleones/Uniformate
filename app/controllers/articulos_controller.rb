@@ -7,7 +7,7 @@ class ArticulosController < ApplicationController
   def index
     @articulos = Articulo.paginate(page: params[:page], per_page: 5).publicados
     if params[:q].present?
-      @articulos = @articulos.where("nombre ilike :q or codigo::varchar(255) ilike :q", q: "%#{params[:q]}%").paginate(page: params[:page], per_page: 5).order('id DESC')
+      @articulos = @articulos.where("nombre ilike :q or codigo::varchar(255) ilike :q", q: "%#{params[:q]}%").paginate(page: params[:page], per_page: 8).order('created_at ASC')
     end
   end
   #GET /articlos/:id
