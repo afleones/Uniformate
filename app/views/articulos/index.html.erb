@@ -38,15 +38,6 @@
                   </tr>
                 <%end%>
               </table>
-            <div class="row">
-              <div class="col-md-6">
-              </div>
-              <div class="col-md-2">
-              </div>
-              <div class="col-md-4">
-                <%= will_paginate @articulos, :theme => 'twitter-boostrap-3', :pagination_class => "Page navigation" %>
-              </div>
-            </div>
         </div><br>
       <%else%>
          <% breadcrumb :articulos %>
@@ -71,16 +62,10 @@
                <%end%>
             <%end%>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-            </div>
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-4">
-              <%= will_paginate @articulos, :theme => 'twitter-boostrap-3', :pagination_class => "Page navigation" %>
-            </div>
-          </div>
       <%end%>
     <%end%>
   </div>
-</div>
+    <div class="text-left">
+      <%= paginate @articulos, :theme => 'twitter-bootstrap-3',:pagination_class => "pagination-sm" %>
+    </div>
+  </div>

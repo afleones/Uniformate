@@ -7,6 +7,5 @@ class Articulo < ApplicationRecord
     belongs_to :categoria
     #belongs_to :especialidad
     #belongs_to :talla
-    scope :publicados, ->{ order("created_at DESC").limit(8) }
     mount_uploader :imagen, ImagenUploader
 end
