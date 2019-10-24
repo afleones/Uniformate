@@ -20,7 +20,7 @@
                   <th class="bg-primary">NOMBRE</th>
                   <th class="bg-primary">CANTIDAD</th>
                   <th class="bg-primary">PRECIO</th>
-                  <th class="bg-primary">ESTADO</th>
+                  <th class="bg-primary">https://www.awseducate.com/student/s/awssiteESTADO</th>
                 </tr>
                 <% @articulos.each do |articulo| %>
                   <tr>
@@ -44,6 +44,8 @@
           <h1 class="text-center">Articulos en Venta</h1>
           <div class="col">
             <% @articulos.each do |articulo| %>
+          <% @articulos.each do |articulo| %>
+            <div class="col">
               <%= link_to articulo_path(articulo.id) do %>
                  <div class="full-width post">
                     <figure class="full-width post-img">
@@ -62,6 +64,17 @@
                <%end%>
             <%end%>
           </div>
+          <div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-4">
+              <%= will_paginate @articulos, :theme => 'twitter-boostrap-3', :pagination_class => "Page navigation" %>
+            </div>
+          </div>
+            </div>
+          <%end%>
       <%end%>
     <%end%>
   </div>
