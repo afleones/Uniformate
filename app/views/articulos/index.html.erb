@@ -53,6 +53,8 @@
           <h1 class="text-center">Articulos en Venta</h1>
           <div class="col">
             <% @articulos.each do |articulo| %>
+          <% @articulos.each do |articulo| %>
+            <div class="col">
               <%= link_to articulo_path(articulo.id) do %>
                  <div class="full-width post">
                     <figure class="full-width post-img">
@@ -80,6 +82,8 @@
               <%= will_paginate @articulos, :theme => 'twitter-boostrap-3', :pagination_class => "Page navigation" %>
             </div>
           </div>
+            </div>
+          <%end%>
       <%end%>
     <%end%>
   </div>
