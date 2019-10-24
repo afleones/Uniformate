@@ -1,6 +1,6 @@
-<% breadcrumb :categoria_articulos, @categoria, @articulos %>
-<h1 class="text-center">Articulos De La Categorias <%= @categoria.nombre %> </h1>
 <div class="container">
+  <% breadcrumb :categoria_articulos, @categoria, @articulos %>
+  <h1 class="text-center">Articulos De La Categorias <b><%= @categoria.nombre %></b> </h1>
   <% if signed_in? %>
     <%if current_user.has_role? :admin %>
       <div class="table-responsive">
@@ -12,14 +12,14 @@
             </span>
           </div>
         <%end%><br>
-            <table class="table table-striped">
+            <table class="table table-striped table-bordered">
               <tr>
-                <th class="active">Id</th>
-                <th class="active">Codigo</th>
-                <th class="active">Nombre</th>
-                <th class="active">Cantidad</th>
-                <th class="active">Precio</th>
-                <th class="active">Estado</th>
+                <th class="bg-primary">ID</th>
+                <th class="bg-primary">CODIGO</th>
+                <th class="bg-primary">NOMBRE</th>
+                <th class="bg-primary">CANTIDAD</th>
+                <th class="bg-primary">PRECIO</th>
+                <th class="bg-primary">ESTADO</th>
               </tr>
               <% @articulos.each do |articulo| %>
                 <tr>
@@ -31,8 +31,13 @@
                   <td><%= articulo.estado ? "Activo" : "Inactivo" %></td>
                 </tr>
               <%end%>
+              <% unless @articulos.present? %>
+                <tr>
+                  <h2 class="text-center">No Hay Informacion Solicitada</h2>
+                </tr>
+              <%end%>
             </table>
-      </div>
+      </div><br>
         <%else%>
         <% breadcrumb :categoria_articulos, @categoria, @articulos %>
          <% @articulos.each do |articulo| %>
@@ -52,6 +57,7 @@
                       </div>
                     </figure>
                  </div>
+              <%end%>              
               <%end%>
            </div>
          <%end%>
