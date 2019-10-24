@@ -40,9 +40,8 @@ gem 'jquery-rails'
 gem 'mini_magick'
 gem 'rolify'
 gem "gretel"
-gem "will_paginate"
 gem 'bread', '~> 0.0.13'
 gem 'table_print', '~> 1.5' , '>= 1.5.6'
 gem 'haml-rails'
-gem 'bootstrap-will_paginate', '~> 1.0'
-gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.2'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'bootstrap-kaminari-views', '~> 0.0.5'

@@ -1,10 +1,11 @@
 <div class="container">
+  <div class="row">
   <% breadcrumb :categoria_articulos, @categoria, @articulos %>
   <h1 class="text-center">Articulos De La Categorias <b><%= @categoria.nombre %></b> </h1>
   <% if signed_in? %>
     <%if current_user.has_role? :admin %>
       <div class="table-responsive">
-        <%= form_tag(articulos_path, class:"form-inline" , method: :get) do %>
+        <%= form_tag(categoria_articulos_path, class:"form-inline" , method: :get) do %>
           <div class="form-group">
             <input type="text" name="q" class="form-control" placeholder="Buscar..." type="text" value="<%= params[:q] %>">
             <span class="form-group-btn">
@@ -63,4 +64,8 @@
          <%end%>
     <%end%>
   <%end%>
+  </div>
+  <div class="text-left">
+    <%= paginate @articulos, :theme => 'twitter-bootstrap-3',:pagination_class => "pagination-sm" %>
+  </div>
 </div>
