@@ -175,6 +175,7 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rolify (5.2.0)
+    rollbar (2.22.1)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.4)
@@ -270,6 +271,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.7)
   rolify
+  rollbar (~> 2.22, >= 2.22.1)
   rspec-rails
   sass-rails (~> 5.0)
   simple_form
