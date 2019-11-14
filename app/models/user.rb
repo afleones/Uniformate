@@ -2,7 +2,7 @@ class User < ApplicationRecord
   rolify
 
   devise :database_authenticatable, :registerable,
-           :recoverable, :rememberable, :validatable
+           :recoverable, :rememberable, :validatable, :confirmable
 
   belongs_to :tipo_documento
 
