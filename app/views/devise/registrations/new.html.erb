@@ -23,10 +23,10 @@
                </div>
                <div class="row">
                  <div class="col-md-6">
-                    <%= f.association :tipo_documento, prompt: "Selecione" , label_method: :nombre, value_method: :id , input_html: {class: "form-control", min:"1" } %>
+                    <%= f.association :tipo_documento, prompt: "Seleccionar" , label_method: :nombre, value_method: :id , input_html: {class: "form-control", min:"1" } %>
                  </div>
                  <div class="col-md-6">
-                     <%= f.input :documento,required: true,autofocus: true,placeholder: "Escriba su numero de documento",input_html: { autocomplete: "email", class: "form-control"}%>
+                     <%= f.input :documento,required: true,autofocus: true,placeholder: "Escriba su numero de documento",input_html: { autocomplete: "email", class: "form-control", min:"1"}%>
                  </div>
                </div>
               <div class="row">

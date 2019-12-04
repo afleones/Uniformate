@@ -42,6 +42,14 @@
       <%else%>
          <% breadcrumb :articulos %>
           <h1 class="text-center">Articulos en Venta</h1>
+          <%= form_tag(articulos_path, class:"form-inline" , method: :get) do %>
+            <div class="form-group">
+              <input type="text" name="q" class="form-control" placeholder="Buscar..." type="text" value="<%= params[:q] %>">
+              <span class="form-group-btn">
+                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          <%end%>
           <div class="col">
             <% @articulos.each do |articulo| %>
           <% @articulos.each do |articulo| %>
@@ -56,12 +64,18 @@
                          <%= image_tag 'default-150x150'%>
                        <%end%>
                        <div class="full-width post-info">
-                         <p class="full-width post-info-price nom_gru"><label>Nombres:</label><%=  articulo.nombre%></p>
+                         <p class="full-width post-info-price nom_gru"><label>Categoria:</label><%= articulo.categoria.nombre%></p>
+                         <p class="full-width post-info-price nom_gru"><label>Nombre:</label><%=  articulo.nombre%></p>
                          <p class="full-width post-info-price nom_gru"><label>Precio:</label><%=  articulo.valor%></p>
                        </div>
                      </figure>
                   </div>
                <%end%>
+            <%end%>
+            <% unless @articulos.present? %>
+              <tr>
+                <h2 class="text-center">No Hay Informacion Solicitada</h2>
+              </tr>
             <%end%>
           </div>
           <div class="row">
@@ -81,4 +95,4 @@
     <div class="text-left">
       <%= paginate @articulos, :theme => 'twitter-bootstrap-3',:pagination_class => "pagination-sm" %>
     </div>
-  </div>
+</div>
