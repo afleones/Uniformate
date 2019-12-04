@@ -789,3 +789,7 @@ login.html & newaccount.html*/
 #new_grupo{
   margin-top:25px
 }
+
+.cont{
+  float: inline-end;
+}

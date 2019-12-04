@@ -9,7 +9,7 @@
                 <div class="col-md-2">
                   <h2>Codigo</h2><%= @articulo.codigo%>
                     <%if current_user.has_role? :admin %>
-                      <br><br><%= link_to "Editar Articulo", edit_articulo_path(@articulo) , class:"btn btn-warning"%><br><br>
+                      <br><br><%= link_to "Editar Articulo", edit_articulo_path(@articulo) , class:"btn btn-nar"%><br><br>
                     <%end%>
                  </div>
                  <div class="col-md-2">

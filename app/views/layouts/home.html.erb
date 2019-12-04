@@ -47,9 +47,7 @@
         <% if user_signed_in? %>
             <% if current_user.has_role? :admin %>
             <li class="dropdown messages-menu">
-              <a href="<%=articulos_path%>">
-              <span class="fa fa-user-circle-o"></span>ADMINISTRACION
-              </a>
+              <a href="<%=articulos_path%>"><span class="fa fa-user-circle-o"></span>ADMINISTRACION</a>
             </li>
           <%else%>
           <li class="dropdown notifications-menu">
