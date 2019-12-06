@@ -59,7 +59,7 @@
                        <% if articulo.imagen.present? %>
                          <%= image_tag articulo.imagen.thumb.url %>
                        <%else%>
-                         <%= image_tag 'default-150x150'%>
+                         <%= image_tag 'logoSena.png'%>
                        <%end%>
                        <div class="full-width post-info">
                          <p class="full-width post-info-price nom_gru"><label>Categoria:</label><%= articulo.categoria.nombre%></p>

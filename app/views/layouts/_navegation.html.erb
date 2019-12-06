@@ -58,7 +58,7 @@
                           <a href="<%= edit_user_registration_path %>" class="btn btn-nar">MI PERFIL</a>
                         </div>
                         <div class="pull-right">
-                          <%= link_to "Salir", destroy_user_session_path, method: :delete, class: "btn btn-danger header-menu-mobile-btn"%>
+                          <%= link_to "Cerrar sesion", destroy_user_session_path, method: :delete, class: "btn btn-danger header-menu-mobile-btn"%>
                         </div>
                       </li>
                     </ul>
@@ -83,7 +83,11 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <%=image_tag 'user2-160x160.jpg', class: "img-circle", alt: "img-circle"%>
+        <% if current_user.perfil.thumb.present?%>
+          <%= image_tag current_user.perfil.thumb,  class: "img-circle", alt: "img-circle"%>
+        <%else%>
+          <%=image_tag 'user2-160x160.jpg', class: "img-circle", alt: "User Image"%>
+        <%end%>
       </div>
       <div class="pull-left info">
         <small><%= current_user.nombre.upcase%></small><br>

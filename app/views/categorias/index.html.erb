@@ -47,9 +47,9 @@
                                   <figure class="full-width post-img">
                                     <!-- Tamaño de la imagen 248x186 pixeles-->
                                     <% if categoria.foto.present? %>
-                                        <%= link_to  image_tag categoria.foto.thumb.url , categoria_articulos_path(categoria.id)%>
+                                        <%= image_tag categoria.foto.thumb.url%>
                                     <%else%>
-                                        <%= image_tag 'default-150x150'%>
+                                        <%= image_tag 'logoSena.png'%>
                                     <%end%>
                                   </figure>
                                 <%end%>
