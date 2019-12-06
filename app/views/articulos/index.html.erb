@@ -25,7 +25,7 @@
                 <% @articulos.each do |articulo| %>
                   <tr>
                     <td><%=  articulo.id%></td>
-                    <td><%= link_to articulo.codigo , articulo_path(articulo.id) %></td>
+                    <td><%= link_to articulo.codigo , articulo_path(articulo.id) , :remote=>true  %></td>
                     <td><%=  articulo.nombre %></td>
                     <td><%=  articulo.cantidad %></td>
                     <td><%=  articulo.valor %></td>
@@ -38,6 +38,8 @@
                   </tr>
                 <%end%>
               </table>
+              <div id="new-articulo">
+              </div>
         </div><br>
       <%else%>
          <% breadcrumb :articulos %>
@@ -52,7 +54,7 @@
           <%end%>
           <div class="col">
             <% @articulos.each do |articulo| %>
-              <%= link_to articulo_path(articulo.id) do %>
+              <%= link_to articulo_path(articulo.id) , :remote=>true  do %>
                  <div class="full-width post">
                     <figure class="full-width post-img">
                     <!-- Tamaño de la imagen 248x186 pixeles-->
@@ -75,6 +77,8 @@
                 <h2 class="text-center">No Hay Informacion Solicitada</h2>
               </tr>
             <%end%>
+          </div>
+          <div id="new-articulo">
           </div>
       <%end%>
     <%end%>

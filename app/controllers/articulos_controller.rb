@@ -13,6 +13,9 @@ class ArticulosController < ApplicationController
   #GET /articlos/:id
   def show
     @articulo = Articulo.find(params[:id])
+    respond_to do |f|
+      f.js
+    end
   end
   #GET /articulos/new
   def new
