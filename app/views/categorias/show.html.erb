@@ -8,10 +8,12 @@
                  <table class="table table-striped">
                     <tr>
                       <th class="active">Nombre</th>
+                      <th class="active">Foto</th>
                       <th class="active">Editar</th>
                     </tr>
                     <tr>
                       <td class=""><h3><%= @categoria.nombre %></h3></td><br>
+                      <td>  <%= image_tag @categoria.foto.thumb.url , class: "img-responsive img-circle"%> </td>
                       <td><%= link_to "Editar", edit_categoria_path(@categoria) , class:"btn btn-nar"%> </td>
                     </tr>
                 </table>

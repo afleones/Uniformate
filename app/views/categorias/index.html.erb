@@ -1,44 +1,16 @@
 <div class="container">
   <div class="row">
     <% if signed_in? %>
-      <% breadcrumb :categorias %>
-        <% if current_user.has_role? :admin %>
-          <div class="table-responsive">
-            <h1 class="text-center">Categorias</h1>
-            <%= form_tag(categorias_path, class:"form-inline" , method: :get) do %>
-              <div class="form-group">
-                <input type="text" name="q" class="form-control" placeholder="Buscar..." type="text" value="<%= params[:q] %>">
-                <span class="form-group-btn">
-                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                </span>
-              </div>
-             <%end%><br>
-                <div class="col-md-10">
-                  <table class="table table-striped table-bordered">
-                    <tr>
-                      <th class="bg-primary">ID</th>
-                      <th class="bg-primary">NOMBRE</th>
-                    </tr>
-                    <% @categorias.each do |categoria| %>
-                      <tr>
-                        <td><%= categoria.id %></td>
-                        <td><%= link_to categoria.nombre, categoria_articulos_path(categoria.id)%></td>
-                    <%end%>
-                      </tr>
-                      <% unless @categorias.present? %>
-                        <tr>
-                          <h2 class="text-center">No Hay Informacion Solicitada</h2>
-                        </tr>
-                      <%end%>
-                  </table>
-                  </div>
-                  <div class="col-md-2">
-                  </div>
-              </div>
-            <%else%>
                   <% breadcrumb :categorias %>
                     <h1 class="text-center">Categorias</h1>
-
+                    <%= form_tag(categorias_path, class:"form-inline" , method: :get) do %>
+                      <div class="form-group">
+                        <input type="text" name="q" class="form-control" placeholder="Buscar..." type="text" value="<%= params[:q] %>">
+                        <span class="form-group-btn">
+                          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                        </span>
+                      </div>
+                     <%end%><br>
                         <% @categorias.each do |categoria| %>
                         <div class="col">
                            <%= link_to categoria_path(categoria) do %>
@@ -55,12 +27,17 @@
                                 <%end%>
                                 <div class="full-width post-info">
                                    <p class="full-width post-info-price nom_gru"><%= link_to categoria.nombre, categoria_articulos_path(categoria.id)%></p>
+                                  <p class="full-width post-info-price nom_gru"> Articulos Disponibles <%=categoria.articulos.where(estado: true).count%></p>
                                 </div>
                               </div>
+                              <% unless @categorias.present? %>
+                                <tr>
+                                  <h2 class="text-center">No Hay Informacion Solicitada</h2>
+                                </tr>
+                              <%end%>
                       </div>
                     <%end%>
               <%end%>
           <%end%>
-    <%end%>
   </div>
 </div>
