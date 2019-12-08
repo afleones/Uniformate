@@ -1,47 +1,31 @@
-  <body class="hold-transition login-page">
-  <div class="login-box">
+<div class="login-box cont">
     <div class="login-logo">
       <a>Iniciar Sesion</a>
     </div>
-    <div class="card">
+  <div class="card">
       <div class="card-body login-card-body">
         <p class="font-weight-bold" >Inserta tus Datos Para Ingresar</p>
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <label for="email">Email</label>
             <div class="form-group">
-                <%= f.input :email,
-                            required: false,
-                            autofocus: true,
-                            label: false,
-                            input_html: { autocomplete: "email", class: "form-control", placeholder: "Ingrese Email"} %>
+                <%= f.input :email,required: false,autofocus: true,label: false,input_html: { autocomplete: "email", class: "form-control", placeholder: "Ingrese Email"} %>
             </div>
             <label for="password">Contraseña</label>
             <div class="form-group">
-              <%= f.input :password,
-                          required: false,
-                          label: false,
-                          input_html: { autocomplete: "current-password", class: "form-control", placeholder: "Ingrese  Contraseña"} %>
+              <%= f.input :password,required: false,label: false,input_html: { autocomplete: "current-password", class: "form-control", placeholder: "Ingrese  Contraseña"} %>
             </div>
             <div class="row">
               <div class="col-md-5">
-                <div class="icheck-primary d-inline">
                   <%= f.input :remember_me, as: :boolean, type: "checkbox", id: "remember" if devise_mapping.rememberable? %>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Ingresar</button>
                 </div>
-              <div class="col-4">
-              </div>
-              <div class="col-4">
-              </div>
-              <div class="col-md-4">
-              <button type="submit" class="btn btn-primary">Ingresar</button>
-              </div>
               </div>
             </div>
           <div class="form-group">
-            <div class="col-md-6">
             <%= render "devise/shared/links" %>
-            </div>
           </div>
       <% end %>
     </div>
   </div>
-  </body>
+</div>

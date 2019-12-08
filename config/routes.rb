@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   resources :tallas
   resources :especialidades
 
+  resources :users, only: [:edit,:update] do
+  resources :cursos, only: [:index], module: :users
+  end
+
   resources :categorias do
   resources :articulos, module: :categorias, only: [:index]
   end

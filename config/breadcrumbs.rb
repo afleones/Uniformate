@@ -1,6 +1,7 @@
 crumb :root do
   link "Inicio", root_path
 end
+
 crumb :articulos do
   link "Articulos", articulos_path
 end
@@ -35,16 +36,15 @@ crumb :categoria_show do |categoria|
 end
 
 crumb :categoria_articulos do |categoria, articulos|
-  link "#{categoria.nombre}Articulos", categoria_articulos_path
-  parent :categorias, categoria
+  link "#{categoria.nombre}", categoria_articulos_path
+  parent :categorias, categoria, articulos
 end
+
 
 crumb :categoria_edit do |categoria|
    link "editar categoria: #{categoria.nombre}", edit_categoria_path(categoria)
    parent :categorias, categoria
  end
-
-
 
 crumb :tallas do
   link "Tallas", tallas_path

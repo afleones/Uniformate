@@ -7,6 +7,9 @@ class CategoriasController < ApplicationController
   #GET /categorias
   def index
     @categorias = Categoria.all
+    if params[:q].present?
+      @categorias = @categorias.where("nombre ilike :q", q: "%#{params[:q]}%")
+    end
   end
   #GET /categorias/:id
   def show
@@ -33,7 +36,7 @@ class CategoriasController < ApplicationController
   end
   #PUT /categorias/:id
   def update
-    if current_user.has_role? :admin
+    if @user.has_role? :admin
       @categoria = Categoria.find_by id: params[:id]
       if @categoria.update(categoria_params)
         flash[:success]="Categoria actualizada"

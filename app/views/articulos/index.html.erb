@@ -1,28 +1,98 @@
-<% if signed_in? %>
-<div class="table-responsive">
-  <% breadcrumb :articulos %>
-  <h1 class="text-center">Articulos</h1>
-      <table class="table table-striped">
-        <tr>
-          <th class="active">Id</th>
-          <th class="active">Codigo</th>
-          <th class="active">Nombre</th>
-          <th class="active">Cantidad</th>
-          <th class="active">Precio</th>
-        </tr>
-        <% @articulos.each do |articulo| %>
-            <tr>
-              <td><%= link_to articulo.id , articulo_path(articulo.id)%></td>
-              <td><%= link_to articulo.codigo , articulo_path(articulo.id)%></td>
-              <td><%= link_to articulo.nombre , articulo_path(articulo.id)%></td>
-              <td><%= link_to articulo.cantidad , articulo_path(articulo.id)%></td>
-              <td><%= link_to articulo.valor , articulo_path(articulo.id)%></td>
-        <%end%>
-            </tr>
-      </table>
-
-<%end%>
-      <%if current_user.has_role? :admin%>
-        <%= link_to "Crear Articulo", new_articulo_path(@articulo) , class:"btn btn-success btn-lg" %>
+<div class="container">
+  <div class="row">
+    <% if signed_in? %>
+      <% breadcrumb :articulos %>
+      <%if current_user.has_role? :admin %>
+        <div class="table-responsive">
+            <h1 class="text-center">Articulos</h1>
+          <%= form_tag(articulos_path, class:"form-inline" , method: :get) do %>
+            <div class="form-group">
+              <input type="text" name="q" class="form-control" placeholder="Buscar..." type="text" value="<%= params[:q] %>">
+              <span class="form-group-btn">
+                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          <%end%>
+              <br><table class="table table-striped table-bordered">
+                <tr>
+                  <th class="bg-primary">ID</th>
+                  <th class="bg-primary">CODIGO</th>
+                  <th class="bg-primary">NOMBRE</th>
+                  <th class="bg-primary">CANTIDAD</th>
+                  <th class="bg-primary">PRECIO</th>
+                  <th class="bg-primary">https://www.awseducate.com/student/s/awssiteESTADO</th>
+                </tr>
+                <% @articulos.each do |articulo| %>
+                  <tr>
+                    <td><%=  articulo.id%></td>
+                    <td><%= link_to articulo.codigo , articulo_path(articulo.id) %></td>
+                    <td><%=  articulo.nombre %></td>
+                    <td><%=  articulo.cantidad %></td>
+                    <td><%=  articulo.valor %></td>
+                    <td><%= articulo.estado ? "Activo" : "Inactivo" %></td>
+                  </tr>
+                <%end%>
+                <% unless @articulos.present? %>
+                  <tr>
+                    <h2 class="text-center">No Hay Informacion Solicitada</h2>
+                  </tr>
+                <%end%>
+              </table>
+        </div><br>
+      <%else%>
+         <% breadcrumb :articulos %>
+          <h1 class="text-center">Articulos en Venta</h1>
+          <%= form_tag(articulos_path, class:"form-inline" , method: :get) do %>
+            <div class="form-group">
+              <input type="text" name="q" class="form-control" placeholder="Buscar..." type="text" value="<%= params[:q] %>">
+              <span class="form-group-btn">
+                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          <%end%>
+          <div class="col">
+            <% @articulos.each do |articulo| %>
+          <% @articulos.each do |articulo| %>
+            <div class="col">
+              <%= link_to articulo_path(articulo.id) do %>
+                 <div class="full-width post">
+                    <figure class="full-width post-img">
+                    <!-- Tamaño de la imagen 248x186 pixeles-->
+                       <% if articulo.imagen.present? %>
+                         <%= image_tag articulo.imagen.thumb.url %>
+                       <%else%>
+                         <%= image_tag 'logoSena.png'%>
+                       <%end%>
+                       <div class="full-width post-info">
+                         <p class="full-width post-info-price nom_gru"><label>Categoria:</label><%= articulo.categoria.nombre%></p>
+                         <p class="full-width post-info-price nom_gru"><label>Nombre:</label><%=  articulo.nombre%></p>
+                         <p class="full-width post-info-price nom_gru"><label>Precio:</label><%=  articulo.valor%></p>
+                       </div>
+                     </figure>
+                  </div>
+               <%end%>
+            <%end%>
+            <% unless @articulos.present? %>
+              <tr>
+                <h2 class="text-center">No Hay Informacion Solicitada</h2>
+              </tr>
+            <%end%>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-4">
+              <%= will_paginate @articulos, :theme => 'twitter-boostrap-3', :pagination_class => "Page navigation" %>
+            </div>
+          </div>
+            </div>
+          <%end%>
+      <%end%>
     <%end%>
+  </div>
+    <div class="text-left">
+      <%= paginate @articulos, :theme => 'twitter-bootstrap-3',:pagination_class => "pagination-sm" %>
+    </div>
 </div>

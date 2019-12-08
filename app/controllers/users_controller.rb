@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :tipo_documento
 
   def edit
   @user = User.find(params[:id])
@@ -21,14 +22,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    salir
-    redirect_to root_home_index
-  end
-
   private
   def user_params
-    params.require(:user).permit(:nombre, :email, :telefono, :tipo_documento, :documento, :password, :perfil)
+    params.require(:user).permit(:nombre, :apellido, :email, :tipo_documento, :documento, :password, :telefono, :perfil)
+  end
+
+  def tipo_documento
+      @tipo = TipoDocumento.all
   end
 
 end

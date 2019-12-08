@@ -1,21 +1,66 @@
-<% if signed_in? %>
-<div class="table-responsive">
-  <% breadcrumb :categorias %>
-  <h1 class="text-center">Categorias</h1>
-    <table class="table table-striped">
-      <tr>
-        <th class="active">Id</th>
-        <th class="active">Nombre</th>
-      </tr>
-      <% @categorias.each do |categorias| %>
-        <tr>
-          <td><%= link_to categorias.id, categoria_path(categorias.id)  %></td>
-          <td><%= link_to categorias.nombre, categoria_articulos_path(categorias.id)%></td>
-        </tr>
-      <%end%>
-    </table>
+<div class="container">
+  <div class="row">
+    <% if signed_in? %>
+      <% breadcrumb :categorias %>
+        <% if current_user.has_role? :admin %>
+          <div class="table-responsive">
+            <h1 class="text-center">Categorias</h1>
+            <%= form_tag(categorias_path, class:"form-inline" , method: :get) do %>
+              <div class="form-group">
+                <input type="text" name="q" class="form-control" placeholder="Buscar..." type="text" value="<%= params[:q] %>">
+                <span class="form-group-btn">
+                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                </span>
+              </div>
+             <%end%><br>
+                <div class="col-md-10">
+                  <table class="table table-striped table-bordered">
+                    <tr>
+                      <th class="bg-primary">ID</th>
+                      <th class="bg-primary">NOMBRE</th>
+                    </tr>
+                    <% @categorias.each do |categoria| %>
+                      <tr>
+                        <td><%= categoria.id %></td>
+                        <td><%= link_to categoria.nombre, categoria_articulos_path(categoria.id)%></td>
+                    <%end%>
+                      </tr>
+                      <% unless @categorias.present? %>
+                        <tr>
+                          <h2 class="text-center">No Hay Informacion Solicitada</h2>
+                        </tr>
+                      <%end%>
+                  </table>
+                  </div>
+                  <div class="col-md-2">
+                  </div>
+              </div>
+            <%else%>
+                  <% breadcrumb :categorias %>
+                    <h1 class="text-center">Categorias</h1>
+
+                        <% @categorias.each do |categoria| %>
+                        <div class="col">
+                           <%= link_to categoria_path(categoria) do %>
+                              <div class="full-width post">
+                                <%= link_to categoria_articulos_path(categoria.id) do %>
+                                  <figure class="full-width post-img">
+                                    <!-- Tamaño de la imagen 248x186 pixeles-->
+                                    <% if categoria.foto.present? %>
+                                        <%= image_tag categoria.foto.thumb.url%>
+                                    <%else%>
+                                        <%= image_tag 'logoSena.png'%>
+                                    <%end%>
+                                  </figure>
+                                <%end%>
+                                <div class="full-width post-info">
+                                   <p class="full-width post-info-price nom_gru"><%= link_to categoria.nombre, categoria_articulos_path(categoria.id)%></p>
+                                </div>
+                              </div>
+                      </div>
+                    <%end%>
+              <%end%>
+          <%end%>
+    <%end%>
+  </div>
 </div>
-      <% if current_user.has_role? :admin%>
-        <%= link_to "Registrar Categoria", new_categoria_path(@categoria) , class:"btn btn-success btn-lg" %>
-      <%end%>
-<%end%>

@@ -1,5 +1,9 @@
 <div class="container">
-  <h1 class="text-center">Editar<br> <%=@categoria.nombre %></h1><br><br>
-  <%= render "form" %>
+  <% breadcrumb :categoria_edit, @categoria %>
+  <div class="row">
+    <div class="col-md-11">
+      <h1 class="text-center">Editar Categoria: "<%=@categoria.nombre%>"</h1><br><br>
+    </div>
+    <%= render "form" %>
+  </div>
 </div>
-<%= link_to "Atras", categoria_path , class:"btn btn-danger" %>

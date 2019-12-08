@@ -33,13 +33,16 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'simple_form'
-gem 'devise'
+gem "devise", ">= 4.7.1"
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 gem 'carrierwave', '~> 1.1'
 gem 'jquery-rails'
 gem 'mini_magick'
 gem 'rolify'
 gem "gretel"
-gem "will_paginate"
 gem 'bread', '~> 0.0.13'
 gem 'table_print', '~> 1.5' , '>= 1.5.6'
+gem 'haml-rails'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'bootstrap-kaminari-views', '~> 0.0.5'
+gem 'rollbar', '~> 2.22', '>= 2.22.1'

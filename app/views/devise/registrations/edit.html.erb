@@ -1,86 +1,77 @@
-<div class="container">
-<h2 class="text-center">Editar Perfil de: <%= @user.nombre%></h2>
-<div class="col-md-5">
-
-</div>
-<div class="col-md-3">
-    <%= image_tag @user.perfil.thumb, class: "img-circle"%>
-</div>
-<div class="col-md-4">
-
-</div>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="row">
-    <div class="col-md-6">
-        <%= f.input :nombre, label: "Nombres", autofocus: true %>
-    </div>
-    <div class="col-md-6">
-      <label>Apellidos</label>
-        <input type="text" placeholder="Apellidos" class="form-control" value="">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <%= f.input :password,
-                  hint: "leave it blank if you don't want to change it",
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-    </div>
-    <div class="col-md-6">
-      <%= f.input :password_confirmation,
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-    </div>
-  </div>
-  <div class="form-inputs">
-
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-
+<div class="edit-users">
+  <div class="container">
     <div class="row">
-      <div class="col-md-6">
-        <%= f.input :current_password,
-                    hint: "Digite su contraseña actual para confirmar los cambios",
-                    required: true,
-                    label: "Contraseña Actual"%>
+      <div class="col-xs-8 col-sm-4 col-md-3">
+        <div class="full-width user-menu-xs">
+          <div class="full-width post-user-info" style="margin: 0 !important;">
+            <%= image_tag @user.perfil.thumb, class: "user-image"%>
+            <p class="full-width"><%= @user.nombre %></p>
+          </div>
+          <div class="full-width list-group">
+            <div class="list-group-item text-center">
+              <P>Miembro Desde:</P><%=l @user.created_at, format: :long %>
+            </div>
+              <a href="perfil.html" class="list-group-item active"><i class="fa fa-user fa-fw" aria-hidden="true"></i> TU PERFIL</a>
+                <a href="#" class="list-group-item"><i class="fa fa-object-group fa-fw" aria-hidden="true"></i> MIS COMPRAS</a>
+          </div>
+        </div>
       </div>
-        <div class="col-md-5">
-
-        </div>
-        <div class="col-md-3">
-          <%= f.input :perfil, class: "form-control", hint: "Carga otra foto si Deseas Actualizar tu foto de Perfil"%>
-        </div>
-        <div class="col-md-4">
-
-  </div>
-
-
-
+        <div class="col-md-6">
+          <h2 class="text-center">Editar datos de usuario</h2>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+              <div class="row">
+              <div class="col-md-6">
+                <%= f.input :nombre, required: true, autofocus: true, input_html: {class: "form-control"}%>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :apellido, required: true, autofocus: true, input_html: {class: "form-control"}%>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <%= f.input :email, required: true, autofocus: true, input_html: {class: "form-control"}%>
+                </div>
+              </div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+              <% end %>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.association :tipo_documento, prompt: "Selecione" , label_method: :nombre, value_method: :id , input_html: {class: "form-control" }%>
+                </div>
+                <div class="col-md-6">
+                  <%= f.input :documento, required: true, autofocus: true, input_html: {class: "form-control", min:"1", disabled: true} %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.input :password,label: "Nueva Contraseña:",hint: "Deje los campos de contraseñas vacios si no desea actualizarla",required: false,input_html: { autocomplete: "new-password" , class: "form-control" } %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.input :password_confirmation,label: "Confirmar Nueva Contraseña:",required: false,input_html: { autocomplete: "new-password" , class: "form-control" } %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <%= f.input :current_password,label: "Contraseña Actual:", hint: "Se necesita su contraseña actual para confirmar",required: true,input_html: { autocomplete: "current-password" , class: "form-control" } %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <%= f.input :perfil, input_html: {class: "form-control input-lg"} %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                  <%= f.button :submit, "Actualizar datos", class: "btn btn-primary btn-lg " %>
+                <div class="col-md-4"></div>
+                <div class="row"></div><br><br>
+                </div>
+              </div>
+          <% end %>
+      </div>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-md-5">
-
-    </div>
-    <div class="col-md-3">
-      <%= f.button :submit, "Actualizar mis Datos", class: "btn btn-warning" %>
-    </div>
-    <div class="col-md-4">
-
-    </div>
-  </div>
-<% end %>
-
-<h3>Desactivar mi Cuenta</h3>
-
-<p>Cuentanos tu Inquietud? <%= link_to "Desactivar mi Cuenta", registration_path(resource_name), data: { confirm: "Estás Seguro?" }, method: :delete %></p>
-
-<%= link_to "Atras", :back %>
 </div>
