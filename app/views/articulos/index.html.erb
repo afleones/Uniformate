@@ -54,7 +54,7 @@
           <%end%>
           <div class="col">
             <% @articulos.each do |articulo| %>
-              <%= link_to articulo_path(articulo.id) , :remote=>true  do %>
+              <%= link_to articulo_path(articulo.id) do %>
                  <div class="full-width post">
                     <figure class="full-width post-img">
                     <!-- Tamaño de la imagen 248x186 pixeles-->
@@ -64,9 +64,8 @@
                          <%= image_tag 'logoSena.png'%>
                        <%end%>
                        <div class="full-width post-info">
-                         <p class="full-width post-info-price nom_gru"><label>Categoria:</label><%= articulo.categoria.nombre%></p>
-                         <p class="full-width post-info-price nom_gru"><label>Nombre:</label><%=  articulo.nombre%></p>
-                         <p class="full-width post-info-price nom_gru"><label>Precio:</label><%=  articulo.valor%></p>
+                          <p class="full-width post-info-price nom_gru"><label>Nombre: </label><%=  articulo.nombre%></p>
+                         <p class="full-width post-info-price nom_gru"><label>Categoria: </label><%= articulo.categoria.nombre%></p>                                               
                        </div>
                      </figure>
                   </div>
@@ -77,8 +76,6 @@
                 <h2 class="text-center">No Hay Informacion Solicitada</h2>
               </tr>
             <%end%>
-          </div>
-          <div id="new-articulo">
           </div>
       <%end%>
     <%end%>
