@@ -35,7 +35,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'simple_form'
 gem "devise", ">= 4.7.1"
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
-gem 'carrierwave', '~> 1.1'
+gem 'carrierwave', '~> 1.3'
 gem 'jquery-rails'
 gem 'mini_magick'
 gem 'rolify'
